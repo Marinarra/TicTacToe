@@ -16,12 +16,12 @@ namespace TicTacToe
         {
             for (int i = 0; i < 9; i++)
             {
-                board[i] = ' ';
+                board[i] = Convert.ToChar(Convert.ToString(i+1));
             }
         }
         public bool checkIfCellAvailable(int coordinate, char flag)
         {
-            if (board[coordinate] != ' ')
+            if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("Space Taken!");
                 return false;
@@ -65,7 +65,7 @@ namespace TicTacToe
         public void systemChoose(char flag)
         {
             int coordinate = rng.Next(8);
-            while (board[coordinate] != ' ')
+            while (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 coordinate = rng.Next(9);
             }
@@ -176,9 +176,9 @@ namespace TicTacToe
             int count = 0;
             for (int i = 0; i < board.Length; i++)
             {
-                if (board[i] != ' ')
+                if (board[i] == 'X' || board[i] == 'O')
                 {
-                    count = count + 1;
+                    count++;
                 }
             }
             if (count == 8)
