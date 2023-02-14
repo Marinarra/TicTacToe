@@ -25,41 +25,17 @@ namespace TicTacToe
             {
                 WriteLine("Space Taken!");
                 return false;
-            }
-            switch (coordinate)
+            } 
+            
+            if(coordinate <= 9 || coordinate >= 1)
             {
-                case 0:
-                    board[0] = flag;
-                    break;
-                case 1:
-                    board[1] = flag;
-                    break;
-                case 2:
-                    board[2] = flag;
-                    break;
-                case 3:
-                    board[3] = flag;
-                    break;
-                case 4:
-                    board[4] = flag;
-                    break;
-                case 5:
-                    board[5] = flag;
-                    break;
-                case 6:
-                    board[6] = flag;
-                    break;
-                case 7:
-                    board[7] = flag;
-                    break;
-                case 8:
-                    board[8] = flag;
-                    break;
-                default:
-                    return false;
+                board[coordinate] = flag;
+                return true;
             }
-            return true;
-
+            else
+            {
+                return false;
+            }
         }
 
         public void systemChoose(char flag)
@@ -69,39 +45,7 @@ namespace TicTacToe
             {
                 coordinate = rng.Next(9);
             }
-            switch (coordinate)
-            {
-                case 0:
-                    board[0] = flag;
-                    break;
-                case 1:
-                    board[1] = flag;
-                    break;
-                case 2:
-                    board[2] = flag;
-                    break;
-                case 3:
-                    board[3] = flag;
-                    break;
-                case 4:
-                    board[4] = flag;
-                    break;
-                case 5:
-                    board[5] = flag;
-                    break;
-                case 6:
-                    board[6] = flag;
-                    break;
-                case 7:
-                    board[7] = flag;
-                    break;
-                case 8:
-                    board[8] = flag;
-                    break;
-                default:
-                    break;
-            }
-
+            board[coordinate] = flag;
         }
 
         public void printBoard()
