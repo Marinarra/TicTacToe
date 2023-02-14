@@ -4,8 +4,8 @@ namespace TicTacToe
 {
     public class Board
     {
-        Random rng = new Random();
-        char[] board = new char[9];
+        private Random rng = new Random();
+        private char[] board = new char[9];
 
         public Board()
         {
