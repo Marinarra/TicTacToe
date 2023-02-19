@@ -26,33 +26,31 @@ namespace TicTacToe
             WriteLine("\n(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
 
         }
-        private void checkIfUserFirst() //Check if user wants to go first
+
+        private void checkIfUserFirst()
         {
-            bool correctOption; //validates key against Y or N
             do
             {
                 WriteLine("Would you like to go first? (Y/N) ");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
-                switch (keyRead.Key)
+                if (keyRead.Key == ConsoleKey.Y)
                 {
-                    case ConsoleKey.Y: // User chooses Y
-                        WriteLine("\nUser has chosen to go first!");
-                        correctOption = true;
-                        flagTurn = user.getSymbol();
-                        break;
-                    case ConsoleKey.N: // User chooses N
-                        WriteLine("\nUser has chosen to go after System!");
-                        correctOption = true;
-                        flagTurn = pc.getSymbol();
-                        break;
-                    default: // User doesnt enter Y or N
-                        WriteLine("\nChoice is unavailable! Please try again.");
-                        correctOption = false;
-                        break;
+                    WriteLine("\n User Goes First!");
+                    flagTurn = user.getSymbol();
+                    break;
                 }
-
-            } while (!correctOption);
+                else if (keyRead.Key == ConsoleKey.N)
+                {
+                    WriteLine("\n System Goes First!");
+                    flagTurn = pc.getSymbol();
+                    break;
+                }
+                else
+                {
+                    WriteLine("\n Choice is unavailable! Please try again.");
+                }
+            } while (true);
         }
 
         private void userChooseSymbol()  //Gets users symbol X or O
@@ -136,19 +134,19 @@ namespace TicTacToe
                     gameMenu();
                     flagTurn = pc.getSymbol();
                 }
-            }  while (!board.endCondition(flagTurn));
+            } while (!board.endCondition(flagTurn));
 
         }
 
-    public void startGame()
+        public void startGame()
         {
             initGame();
             startUpCycle();
             RunCycle();
             initGame();
-            
-          
-           
+
+
+
         }
 
     }
