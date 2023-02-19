@@ -55,36 +55,31 @@ namespace TicTacToe
 
         private void userChooseSymbol()  //Gets users symbol X or O
         {
-
-            bool correctOption; // Validates user input
             do
             {
                 WriteLine("Would you like to play as 'X' or 'O'' ?");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
-                switch (keyRead.Key)
+                if (keyRead.Key == ConsoleKey.O) //User chooses O
                 {
-                    case ConsoleKey.O:  //user chooses O
-                        WriteLine("\nUser has chosen 'O'");
-                        correctOption = true;
-                        user.setPlayerSymbol('O');
-                        pc.setPlayerSymbol('X');
-                        break;
-                    case ConsoleKey.X: //User chooses X
-                        WriteLine("\nUser has chosen 'X'");
-                        correctOption = true;
-                        user.setPlayerSymbol('X');
-                        pc.setPlayerSymbol('O');
-                        break;
-                    default: //User doesnt enter X or O
-                        WriteLine("\nChoice is unavailable! Please try again.");
-                        correctOption = false;
-                        break;
+                    WriteLine("\nUser has chosen 'O'"); 
+                    user.setPlayerSymbol('O');
+                    pc.setPlayerSymbol('X');
+                    break;
                 }
-
-            } while (!correctOption);
+                else if (keyRead.Key == ConsoleKey.X)   //User chooses X
+                {
+                    WriteLine("\nUser has chosen 'X'");
+                    user.setPlayerSymbol('X');
+                    pc.setPlayerSymbol('O');
+                    break;
+                }
+                else
+                {
+                    WriteLine("\n Choice is unavailable! Please try again.");
+                }
+            } while (true); //Repeat until X or O pressed
         }
-
 
         private void startUpCycle() //start up cycle
         {
