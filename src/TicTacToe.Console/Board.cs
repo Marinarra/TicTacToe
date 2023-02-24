@@ -16,7 +16,7 @@ namespace TicTacToe
         {
             for (int i = 0; i < 9; i++)
             {
-                board[i] = Convert.ToChar(Convert.ToString(i+1));
+                board[i] = Convert.ToChar(Convert.ToString(i + 1));
             }
         }
         public bool checkIfCellAvailable(int coordinate, char flag)
@@ -25,9 +25,9 @@ namespace TicTacToe
             {
                 WriteLine("Space Taken!");
                 return false;
-            } 
-            
-            if(coordinate <= 9 || coordinate >= 1)
+            }
+
+            if (coordinate <= 9 || coordinate >= 1)
             {
                 board[coordinate] = flag;
                 return true;
@@ -56,6 +56,10 @@ namespace TicTacToe
             WriteLine("    \t\t\t\t {0} | {1} | {2} ", board[3], board[4], board[5]);
             WriteLine("    \t\t\t\t------------ ");
             WriteLine("    \t\t\t\t {0} | {1} | {2} ", board[6], board[7], board[8]);
+        }
+        public void resetBoard()
+        {
+            initBoard();
         }
 
         private bool checkWinHorizontal(char flag)
@@ -134,29 +138,23 @@ namespace TicTacToe
                 return false;
             }
         }
-
+        
 
         public bool checkWinCondition(char flag)
         {
             if (checkWinVertical(flag) == true)
-            {
-                return true;
-            }
+            { return true; }
             else if (checkWinHorizontal(flag) == true)
-            {
-                return true;
-            }
+            { return true; }
             else if (checkWinDiagnol(flag) == true)
-            {
-                return true;
-            }
+            { return true; }
             else
-            {
-                return false;
-            }
+            { return false; }
 
         }
-
     }
 }
+
+    
+
 
