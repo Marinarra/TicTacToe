@@ -115,7 +115,7 @@ namespace TicTacToe
             }
         }
 
-        public bool checkTie()
+        public bool checkTieCondition()
         {
             int count = 0;
             for (int i = 0; i < board.Length; i++)
@@ -136,7 +136,7 @@ namespace TicTacToe
         }
 
 
-        public bool endCondition(char flag)
+        public bool checkWinCondition(char flag)
         {
             if (checkWinVertical(flag) == true)
             {
@@ -147,10 +147,6 @@ namespace TicTacToe
                 return true;
             }
             else if (checkWinDiagnol(flag) == true)
-            {
-                return true;
-            }
-            else if (checkTie() == true)
             {
                 return true;
             }

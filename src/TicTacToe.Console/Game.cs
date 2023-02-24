@@ -14,10 +14,10 @@ namespace TicTacToe
 
         public Game()
         {
-            initGame();
+            Console.Clear();
         }
 
-        private void initGame() //Updates game screen 
+        private void updateScreen() //Updates game screen 
         {
             Console.Clear();
             WriteLine("(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
@@ -83,6 +83,7 @@ namespace TicTacToe
 
         private void startUpCycle() //start up cycle
         {
+            updateScreen();
             userChooseSymbol();
             checkIfUserFirst();
         }
@@ -119,26 +120,26 @@ namespace TicTacToe
 
                     board.systemChoose(flagTurn);
                     flagTurn = user.getSymbol();
-                    initGame();
+                    updateScreen();
 
                 }
 
                 if (flagTurn == user.getSymbol())
                 {
-                    initGame();
+                    updateScreen();
                     gameMenu();
                     flagTurn = pc.getSymbol();
                 }
-            } while (!board.endCondition(flagTurn));
-
+            } while (!board.checkWinCondition(flagTurn) || !board.checkTieCondition());
         }
+
+        
 
         public void startGame()
         {
-            initGame();
-            startUpCycle();
-            RunCycle();
-            initGame();
+            updateScreen(); //Sets up screen
+            startUpCycle(); //User selects to go first or not & user selects symbol
+            RunCycle();     // User Coordinate input & RNG System choice
 
 
 
