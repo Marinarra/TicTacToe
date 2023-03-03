@@ -4,21 +4,16 @@ using System;
 using static System.Console;
 namespace TicTacToe
 {
-    public class Game
+    public static class Game
     {
         //Declaring Instances//
-        Player user = new Player();
-        Player pc = new Player();
-        Board board = new Board();
-        char flagTurn = ' ';
+        static Player user = new Player();
+        static Player pc = new Player();
+        static Board board = new Board();
+        static char flagTurn = ' ';
 
-        public Game()
-        {
 
-            Console.Clear();
-        }
-
-        private void updateScreen() //Updates game screen 
+        private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
             WriteLine("(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
@@ -27,7 +22,7 @@ namespace TicTacToe
             WriteLine("\n(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
         }
 
-        private void checkIfUserFirst()
+        private static void checkIfUserFirst()
         {
             do
             {
@@ -53,7 +48,7 @@ namespace TicTacToe
             } while (true);
         }
 
-        private void userChooseSymbol()  //Gets users symbol X or O
+        private static void userChooseSymbol()  //Gets users symbol X or O
         {
             do
             {
@@ -81,15 +76,16 @@ namespace TicTacToe
             } while (true); //Repeat until X or O pressed
         }
 
-        private void startUpCycle() //start up cycle
+        private static void startUpCycle() //start up cycle
         {
+            updateScreen();
             pc.setPlayerSymbol(' ');
             user.setPlayerSymbol(' ');
             updateScreen();
             userChooseSymbol();
             checkIfUserFirst();
         }
-        private void gameMenu() //game menu
+        private static void gameMenu() //game menu
         {
 
             bool correctOption;
@@ -113,7 +109,7 @@ namespace TicTacToe
             } while (!correctOption);
         }
 
-        private void RunCycle()
+        private static void RunCycle()
         {
             do
             {
@@ -152,7 +148,7 @@ namespace TicTacToe
             }
          
         }
-        private void printGameStats()
+        private static void printGameStats()
         {
             WriteLine("-----------------------------------");
             WriteLine("\tUser Wins\t User Losses ");
@@ -165,7 +161,7 @@ namespace TicTacToe
 
         }
 
-        private bool checkIfPlayAgain()
+        private static bool checkIfPlayAgain()
         {
             
             WriteLine("-----------------------------------");
@@ -192,8 +188,9 @@ namespace TicTacToe
 
         }
 
-        public void startGame()
+        public static void startGame()
         {
+            
             do
             {
                 startUpCycle(); //User selects to go first or not & user selects symbol
