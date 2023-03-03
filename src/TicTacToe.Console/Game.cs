@@ -7,7 +7,7 @@ namespace TicTacToe
     public static class Game
     {
         //Declaring Instances//
-        Player user = new Player();
+        static Player user = new Player();
         Player pc = new Player();
         Board board = new Board();
         char flagTurn = ' ';
