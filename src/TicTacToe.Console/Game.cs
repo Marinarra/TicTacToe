@@ -12,11 +12,6 @@ namespace TicTacToe
         static Board board = new Board();
         static char flagTurn = ' ';
 
-        public Game()
-        {
-
-            Console.Clear();
-        }
 
         private static void updateScreen() //Updates game screen 
         {
