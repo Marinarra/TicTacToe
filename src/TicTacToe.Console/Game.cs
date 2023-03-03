@@ -10,7 +10,7 @@ namespace TicTacToe
         static Player user = new Player();
         static Player pc = new Player();
         static Board board = new Board();
-        char flagTurn = ' ';
+        static char flagTurn = ' ';
 
         public Game()
         {
