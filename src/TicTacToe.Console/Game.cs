@@ -78,6 +78,7 @@ namespace TicTacToe
 
         private static void startUpCycle() //start up cycle
         {
+            updateScreen();
             pc.setPlayerSymbol(' ');
             user.setPlayerSymbol(' ');
             updateScreen();
@@ -189,6 +190,7 @@ namespace TicTacToe
 
         public static void startGame()
         {
+            
             do
             {
                 startUpCycle(); //User selects to go first or not & user selects symbol
