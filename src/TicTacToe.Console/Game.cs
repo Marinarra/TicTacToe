@@ -24,6 +24,7 @@ namespace TicTacToe
 
         private static void checkIfUserFirst()
         {
+            bool correctSymbol;
             do
             {
                 WriteLine("Would you like to go first? (Y/N) ");
