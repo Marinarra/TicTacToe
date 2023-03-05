@@ -20,7 +20,10 @@ namespace TicTacToe
             }
         }
         public bool checkIfCellAvailable(int coordinate, char flag)
+            
         {
+            bool result;
+
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("Space Taken!");
