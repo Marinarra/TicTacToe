@@ -34,17 +34,18 @@ namespace TicTacToe
                 {
                     WriteLine("\n User Goes First!");
                     flagTurn = user.getSymbol();
-                    break;
+                    correctSymbol = true;
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     WriteLine("\n System Goes First!");
                     flagTurn = pc.getSymbol();
-                    break;
+                    correctSymbol = true;
                 }
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
+                    correctSymbol = false;
                 }
             } while (true);
         }
