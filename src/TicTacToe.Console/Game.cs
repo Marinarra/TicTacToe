@@ -24,6 +24,7 @@ namespace TicTacToe
 
         private static void checkIfUserFirst()
         {
+            bool correctSymbol = false;
             do
             {
                 WriteLine("Would you like to go first? (Y/N) ");
@@ -33,19 +34,19 @@ namespace TicTacToe
                 {
                     WriteLine("\n User Goes First!");
                     flagTurn = user.getSymbol();
-                    break;
+                    correctSymbol = true;
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     WriteLine("\n System Goes First!");
                     flagTurn = pc.getSymbol();
-                    break;
+                    correctSymbol = true;
                 }
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
-            } while (true);
+            } while (correctSymbol == false);
         }
 
         private static void userChooseSymbol()  //Gets users symbol X or O
