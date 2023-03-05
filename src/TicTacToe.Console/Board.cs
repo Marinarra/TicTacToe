@@ -35,10 +35,7 @@ namespace TicTacToe
                 board[coordinate] = flag;
                 result = true;
             }
-            else
-            {
-                result = false;
-            }
+          
             return result;
         }
 
