@@ -27,7 +27,6 @@ namespace TicTacToe
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("Space Taken!");
-                result = false;
             }
 
             if (coordinate <= 9 || coordinate >= 1)
