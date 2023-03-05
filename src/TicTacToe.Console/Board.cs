@@ -27,17 +27,17 @@ namespace TicTacToe
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("Space Taken!");
-                return false;
+                result = false;
             }
 
             if (coordinate <= 9 || coordinate >= 1)
             {
                 board[coordinate] = flag;
-                return true;
+                result = true;
             }
             else
             {
-                return false;
+                result = false;
             }
         }
 
