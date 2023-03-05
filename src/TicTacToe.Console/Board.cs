@@ -39,6 +39,7 @@ namespace TicTacToe
             {
                 result = false;
             }
+            return result;
         }
 
         public void systemChoose(char flag)
