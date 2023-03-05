@@ -22,7 +22,7 @@ namespace TicTacToe
         public bool checkIfCellAvailable(int coordinate, char flag)
             
         {
-            bool result;
+            bool result = false;
 
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
