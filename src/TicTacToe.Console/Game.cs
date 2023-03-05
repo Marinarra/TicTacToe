@@ -46,7 +46,7 @@ namespace TicTacToe
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
-            } while (true);
+            } while (correctSymbol == false);
         }
 
         private static void userChooseSymbol()  //Gets users symbol X or O
