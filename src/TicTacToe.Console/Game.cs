@@ -91,6 +91,7 @@ namespace TicTacToe
 
             bool correctOption;
             int keyEntered;
+
             do
             {
                 WriteLine("-----------------------------------");
@@ -100,8 +101,8 @@ namespace TicTacToe
                 WriteLine("Enter Coordinate to place token (1-9)");
 
                 WriteLine("-----------------------------------");
+                ConsoleKeyInfo keyRead = Console.ReadKey();
 
-                keyEntered = Convert.ToInt32(ReadLine());
                 if (keyEntered == 0)
                 {
                     Environment.Exit(0);
