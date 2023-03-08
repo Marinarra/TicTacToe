@@ -91,6 +91,7 @@ namespace TicTacToe
 
             bool correctOption;
             int keyEntered;
+            int choice;
 
             do
             {
@@ -103,6 +104,7 @@ namespace TicTacToe
                 WriteLine("-----------------------------------");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
+                choice = Convert.ToInt32(keyRead.Key);
                 if (keyEntered == 0)
                 {
                     Environment.Exit(0);
