@@ -105,6 +105,7 @@ namespace TicTacToe
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
                 choice = Convert.ToInt32(keyRead.Key);
+                keyEntered = choice - 48;
                 if (keyEntered == 0)
                 {
                     Environment.Exit(0);
