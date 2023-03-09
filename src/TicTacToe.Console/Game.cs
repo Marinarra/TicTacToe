@@ -108,14 +108,15 @@ namespace TicTacToe
                 keyEntered = choice - 48;
                 if (keyEntered == 0)
                 {
-                    Environment.Exit(0);
+                    ShutDown();
                 }
                 correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
             } while (!correctOption);
         }
+        
 
         private static void RunCycle()
-        {
+        { 
             do
             {
                 if (flagTurn == pc.getSymbol())
@@ -152,6 +153,13 @@ namespace TicTacToe
                 user.addTie();  
             }
          
+        }
+
+        private static void ShutDown()
+        {
+            printGameStats();
+            Environment.Exit(0);
+
         }
         private static void printGameStats()
         {
@@ -192,6 +200,7 @@ namespace TicTacToe
             } while (true);
 
         }
+
 
         public static void startGame()
         {
