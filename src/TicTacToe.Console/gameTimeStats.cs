@@ -20,11 +20,11 @@ namespace TicTacToe
         }
         private void setGameTime()
         {
-            gameTime = timer.ElapsedMilliseconds;
+            gameTime = timer.Elapsed.TotalSeconds;
         }
         private void setAvgGameTime()
         {
-            avgGameTime = avgGameTime + timer.ElapsedMilliseconds;
+            avgGameTime = avgGameTime + timer.Elapsed.TotalSeconds;
         }
 
         public double getGameTime()
