@@ -7,16 +7,17 @@ namespace TicTacToe
 
         Stopwatch timer = new Stopwatch();
         private double gameTime = 0.00, avgGameTime = 0.00,totalGameTime = 0.00;
-
+        private int gamesPlayed = 0;
         public void startTimer()
         {
             timer.Start();
         }
         public void stopTime()
         {
-            setAvgGameTime();
+            gamesPlayed = gamesPlayed + 1;
             setGameTime();
             setTotalGameTIme();
+            setAvgGameTime();
             timer.Reset();
         }
         private void setGameTime()
@@ -25,7 +26,7 @@ namespace TicTacToe
         }
         private void setAvgGameTime()
         {
-            avgGameTime = avgGameTime + timer.Elapsed.TotalSeconds;
+            avgGameTime = ((totalGameTime) / gamesPlayed);
         }
         private void setTotalGameTIme()
         {
