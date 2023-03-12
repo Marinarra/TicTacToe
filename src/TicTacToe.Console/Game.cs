@@ -134,7 +134,7 @@ namespace TicTacToe
                     flagTurn = pc.getSymbol();
                 }
 
-            } while (!(board.checkWinCondition(pc.getSymbol()) == true || board.checkWinCondition(user.getSymbol()) == true|| board.checkTieCondition() == true));
+            } while (board.checkWinCondition(pc.getSymbol()) == false && board.checkWinCondition(user.getSymbol()) == false && board.checkTieCondition() == false);
 
             updateScreen();
 
