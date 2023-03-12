@@ -134,7 +134,7 @@ namespace TicTacToe
                     flagTurn = pc.getSymbol();
                 }
 
-            } while (!(board.checkWinCondition(pc.getSymbol()) == true || board.checkWinCondition(user.getSymbol()) == true|| board.checkTieCondition() == true));
+            } while (board.checkWinCondition(pc.getSymbol()) == false && board.checkWinCondition(user.getSymbol()) == false && board.checkTieCondition() == false);
 
             updateScreen();
 
@@ -142,13 +142,14 @@ namespace TicTacToe
             {
                     pc.addPlayerWin();
                     user.addPlayerLoss();
-                } else if(board.checkWinCondition(user.getSymbol()) == true)
+                } 
+            if(board.checkWinCondition(user.getSymbol()) == true)
                 {
                     user.addPlayerWin();
                     pc.addPlayerLoss();
                 }
             
-            else
+            else if (board.checkTieCondition())
             {
                 pc.addTie();
                 user.addTie();  
@@ -168,7 +169,7 @@ namespace TicTacToe
             WriteLine("\t{0}\t\t{1}", user.getPlayerWins(), user.getPlayerLosses());
             WriteLine("-----------------------------------");
             WriteLine("\tSystem Wins\t System Losses ");
-            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerWins());
+            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerLosses());
             WriteLine("Times Tied = {0}", user.getTies());
 
 
