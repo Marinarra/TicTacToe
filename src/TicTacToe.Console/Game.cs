@@ -112,7 +112,7 @@ namespace TicTacToe
                     Environment.Exit(0);
                 }
                 correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
-            } while (!correctOption);
+            } while (correctOption == false);
         }
         
 
