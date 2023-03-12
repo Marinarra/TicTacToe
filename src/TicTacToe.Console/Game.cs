@@ -169,7 +169,7 @@ namespace TicTacToe
             WriteLine("\t{0}\t\t{1}", user.getPlayerWins(), user.getPlayerLosses());
             WriteLine("-----------------------------------");
             WriteLine("\tSystem Wins\t System Losses ");
-            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerWins());
+            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerLosses());
             WriteLine("Times Tied = {0}", user.getTies());
 
 
