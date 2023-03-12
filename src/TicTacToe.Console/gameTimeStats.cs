@@ -16,6 +16,7 @@ namespace TicTacToe
         {
             setAvgGameTime();
             setGameTime();
+            setTotalGameTIme();
             timer.Reset();
         }
         private void setGameTime()
