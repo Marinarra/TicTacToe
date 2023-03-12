@@ -11,8 +11,7 @@ namespace TicTacToe
         static Player pc = new Player();
         static Board board = new Board();
         static char flagTurn = ' ';
-
-
+        static gameTimeStats timerStats = new gameTimeStats();
         private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
@@ -117,7 +116,8 @@ namespace TicTacToe
         
 
         private static void RunCycle()
-        { 
+        {
+            timerStats.startTimer();
             do
             {
                 if (flagTurn == pc.getSymbol())
@@ -159,6 +159,7 @@ namespace TicTacToe
 
         private static void ShutDown()
         {
+            timerStats.stopTime();
             printGameStats();
 
         }
@@ -171,7 +172,8 @@ namespace TicTacToe
             WriteLine("\tSystem Wins\t System Losses ");
             WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerLosses());
             WriteLine("Times Tied = {0}", user.getTies());
-
+            WriteLine("-----------------------------------");
+            WriteLine("\t\t Time spent in game: {0} \t Time spent on average {1}", timerStats.getGameTime(), timerStats.getAvgGameTime());
 
         }
 
@@ -208,6 +210,7 @@ namespace TicTacToe
             
             do
             {
+                
                 startUpCycle(); //User selects to go first or not & user selects symbol
                 RunCycle();     // User Coordinate input & RNG System choice
                 ShutDown();     //Display Statistics of game and game time played and the average time
