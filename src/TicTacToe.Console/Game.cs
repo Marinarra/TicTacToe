@@ -173,7 +173,9 @@ namespace TicTacToe
             WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerLosses());
             WriteLine("Times Tied = {0}", user.getTies());
             WriteLine("-----------------------------------");
-            WriteLine("\t\t Time spent in game: {0:00:00}  \t Time spent on average: {1:00:00}  \t Total time spent across all games: {2:00:00} ",timerStats.getGameTime(), timerStats.getAvgGameTime(),timerStats.getTotalGameTime());
+            WriteLine("\t\t Time spent in game: {0:00:00}" +
+                    "\n\t\t Time spent on average: {1:00:00} " +
+                    "\n\t\t Total time spent across all games: {2:00:00} ",timerStats.getGameTime(), timerStats.getAvgGameTime(),timerStats.getTotalGameTime());
 
         }
 
