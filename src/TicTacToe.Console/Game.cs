@@ -127,7 +127,7 @@ namespace TicTacToe
                     updateScreen();
                 }
 
-                if (flagTurn == user.getSymbol())
+                if (board.checkWinCondition(pc.getSymbol()) == false && board.checkTieCondition() == false && (flagTurn == user.getSymbol()))
                 {
                     updateScreen();
                     gameMenu();
