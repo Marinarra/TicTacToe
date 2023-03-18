@@ -4,21 +4,15 @@ using System;
 using static System.Console;
 namespace TicTacToe
 {
-    public class Game
+    public static class Game
     {
         //Declaring Instances//
-        Player user = new Player();
-        Player pc = new Player();
-        Board board = new Board();
-        char flagTurn = ' ';
-
-        public Game()
-        {
-
-            Console.Clear();
-        }
-
-        private void updateScreen() //Updates game screen 
+        static Player user = new Player();
+        static Player pc = new Player();
+        static Board board = new Board();
+        static char flagTurn = ' ';
+        static gameTimeStats timerStats = new gameTimeStats();
+        private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
             WriteLine("(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
@@ -27,8 +21,9 @@ namespace TicTacToe
             WriteLine("\n(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
         }
 
-        private void checkIfUserFirst()
+        private static void checkIfUserFirst()
         {
+            bool correctSymbol = false;
             do
             {
                 WriteLine("Would you like to go first? (Y/N) ");
@@ -38,22 +33,22 @@ namespace TicTacToe
                 {
                     WriteLine("\n User Goes First!");
                     flagTurn = user.getSymbol();
-                    break;
+                    correctSymbol = true;
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     WriteLine("\n System Goes First!");
                     flagTurn = pc.getSymbol();
-                    break;
+                    correctSymbol = true;
                 }
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
-            } while (true);
+            } while (correctSymbol == false);
         }
 
-        private void userChooseSymbol()  //Gets users symbol X or O
+        private static void userChooseSymbol()  //Gets users symbol X or O
         {
             do
             {
@@ -81,19 +76,22 @@ namespace TicTacToe
             } while (true); //Repeat until X or O pressed
         }
 
-        private void startUpCycle() //start up cycle
+        private static void startUpCycle() //start up cycle
         {
+            updateScreen();
             pc.setPlayerSymbol(' ');
             user.setPlayerSymbol(' ');
             updateScreen();
             userChooseSymbol();
             checkIfUserFirst();
         }
-        private void gameMenu() //game menu
+        private static void gameMenu() //game menu
         {
 
             bool correctOption;
             int keyEntered;
+            int choice;
+
             do
             {
                 WriteLine("-----------------------------------");
@@ -103,18 +101,23 @@ namespace TicTacToe
                 WriteLine("Enter Coordinate to place token (1-9)");
 
                 WriteLine("-----------------------------------");
+                ConsoleKeyInfo keyRead = Console.ReadKey();
 
-                keyEntered = Convert.ToInt32(ReadLine());
+                choice = Convert.ToInt32(keyRead.Key);
+                keyEntered = choice - 48;
                 if (keyEntered == 0)
                 {
+                    ShutDown();
                     Environment.Exit(0);
                 }
                 correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
-            } while (!correctOption);
+            } while (correctOption == false);
         }
+        
 
-        private void RunCycle()
+        private static void RunCycle()
         {
+            timerStats.startTimer();
             do
             {
                 if (flagTurn == pc.getSymbol())
@@ -124,14 +127,14 @@ namespace TicTacToe
                     updateScreen();
                 }
 
-                if (flagTurn == user.getSymbol())
+                if (board.checkWinCondition(pc.getSymbol()) == false && board.checkTieCondition() == false && (flagTurn == user.getSymbol()))
                 {
                     updateScreen();
                     gameMenu();
                     flagTurn = pc.getSymbol();
                 }
 
-            } while (!(board.checkWinCondition(pc.getSymbol()) == true || board.checkWinCondition(user.getSymbol()) == true|| board.checkTieCondition() == true));
+            } while (board.checkWinCondition(pc.getSymbol()) == false && board.checkWinCondition(user.getSymbol()) == false && board.checkTieCondition() == false);
 
             updateScreen();
 
@@ -139,33 +142,44 @@ namespace TicTacToe
             {
                     pc.addPlayerWin();
                     user.addPlayerLoss();
-                } else if(board.checkWinCondition(user.getSymbol()) == true)
+                } 
+            if(board.checkWinCondition(user.getSymbol()) == true)
                 {
                     user.addPlayerWin();
                     pc.addPlayerLoss();
                 }
             
-            else
+            else if (board.checkTieCondition())
             {
                 pc.addTie();
                 user.addTie();  
             }
          
         }
-        private void printGameStats()
+
+        private static void ShutDown()
+        {
+            timerStats.stopTime();
+            printGameStats();
+
+        }
+        private static void printGameStats()
         {
             WriteLine("-----------------------------------");
             WriteLine("\tUser Wins\t User Losses ");
             WriteLine("\t{0}\t\t{1}", user.getPlayerWins(), user.getPlayerLosses());
             WriteLine("-----------------------------------");
             WriteLine("\tSystem Wins\t System Losses ");
-            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerWins());
+            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerLosses());
             WriteLine("Times Tied = {0}", user.getTies());
-
+            WriteLine("-----------------------------------");
+            WriteLine("\t\t Time spent in game: {0:00:00}" +
+                    "\n\t\t Time spent on average: {1:00:00} " +
+                    "\n\t\t Total time spent across all games: {2:00:00} ",timerStats.getGameTime(), timerStats.getAvgGameTime(),timerStats.getTotalGameTime());
 
         }
 
-        private bool checkIfPlayAgain()
+        private static bool checkIfPlayAgain()
         {
             
             WriteLine("-----------------------------------");
@@ -192,14 +206,18 @@ namespace TicTacToe
 
         }
 
-        public void startGame()
+
+        public static void startGame()
         {
+            
             do
             {
+                
                 startUpCycle(); //User selects to go first or not & user selects symbol
                 RunCycle();     // User Coordinate input & RNG System choice
+                ShutDown();     //Display Statistics of game and game time played and the average time
             } while (checkIfPlayAgain() == true);
-            printGameStats();
+            
 
         }
 
