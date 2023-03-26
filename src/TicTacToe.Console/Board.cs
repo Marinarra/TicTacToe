@@ -120,6 +120,7 @@ namespace TicTacToe
 
         public bool checkTieCondition()
         {
+            bool isTied = false;
             int count = 0;
             for (int i = 0; i < board.Length; i++)
             {
@@ -128,14 +129,14 @@ namespace TicTacToe
                     count++;
                 }
             }
-            if (count == 8)
+            if (count == 9)
             {
-                return true;
+               if(checkWinCondition('X') == false && checkWinCondition('O') == false)
+                {
+                    isTied = true;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return isTied;
         }
         
 
