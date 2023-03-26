@@ -148,8 +148,7 @@ namespace TicTacToe
                     user.addPlayerWin();
                     pc.addPlayerLoss();
                 }
-            
-            else if (board.checkTieCondition())
+            else if(board.checkTieCondition() == true)
             {
                 pc.addTie();
                 user.addTie();  
