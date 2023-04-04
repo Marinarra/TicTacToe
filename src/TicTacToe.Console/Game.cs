@@ -90,7 +90,6 @@ namespace TicTacToe
 
             bool correctOption;
             int keyEntered;
-            int choice;
 
             do
             {
