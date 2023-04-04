@@ -103,8 +103,7 @@ namespace TicTacToe
                 WriteLine("-----------------------------------");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
-                choice = Convert.ToInt32(keyRead.Key);
-                keyEntered = choice - 48;
+                keyEntered = convertAscii(Convert.ToInt32(keyRead.Key));
                 if (keyEntered == 0)
                 {
                     ShutDown();
@@ -114,6 +113,17 @@ namespace TicTacToe
             } while (correctOption == false);
         }
         
+        private static int convertAscii(int value)
+        {
+            if(value <= 57 && value >= 48)
+            {
+                value -= 48;
+            } 
+            else if(value >= 96 && value <= 105){
+                value -= 96;
+            }
+            return value;
+        }
 
         private static void RunCycle()
         {
