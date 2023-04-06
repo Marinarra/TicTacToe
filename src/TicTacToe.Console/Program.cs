@@ -5,12 +5,25 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-
-            printMenuText();
-            // Game.startGame();
+            
+              printMenuText();
+             // Game.startGame();
 
         }
-         private static void printMenuText()
+
+        public static int convertAscii(int value)
+        {
+            if (value <= 57 && value >= 48)
+            {
+                value -= 48;
+            }
+            else if (value >= 96 && value <= 105)
+            {
+                value -= 96;
+            }
+            return value;
+        }
+        private static void printMenuText()
             {
             string[] options = {"New Game","Game Stats","Exit Game"};
             WriteLine(" \t######                         #     #\n" +
