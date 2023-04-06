@@ -1,13 +1,21 @@
-﻿using static System.Console;
+﻿using System;
+using static System.Console;
 namespace TicTacToe
 {
     public class Program
     {
+
+
         static void Main(string[] args)
         {
+            int option;
             
-              printMenuText();
-             // Game.startGame();
+                printMenuText();
+                ConsoleKeyInfo keyRead = Console.ReadKey();
+
+                option = convertAscii(Convert.ToInt32(keyRead.Key));
+
+            // Game.startGame();
 
         }
 
