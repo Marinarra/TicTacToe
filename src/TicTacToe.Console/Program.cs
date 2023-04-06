@@ -15,6 +15,22 @@ namespace TicTacToe
 
                 option = convertAscii(Convert.ToInt32(keyRead.Key));
 
+            switch (option)
+            {
+                case 1:
+                    Game.startGame(); // new game
+                    break;
+                case 2:
+                    //game stats
+                    break;
+                case 3:
+                    //exit game
+                    break;
+                default:
+                    break;
+            }
+
+
             // Game.startGame();
 
         }
