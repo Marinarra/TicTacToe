@@ -9,28 +9,29 @@ namespace TicTacToe
         static void Main(string[] args)
         {
             int option;
-            
+            while (true)
+            {
                 printMenuText();
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
                 option = convertAscii(Convert.ToInt32(keyRead.Key));
 
-            switch (option)
-            {
-                case 1:
-                    Game.startGame(); // new game
-                    break;
-                case 2:
-                    //game stats
-                    break;
-                case 3:
-                    //exit game
-                    break;
-                default:
-                    break;
+                switch (option)
+                {
+                    case 1:
+                        Game.startGame(); // new game
+                        break;
+                    case 2:
+                        //game stats
+                        break;
+                    case 3:
+                        //exit game
+                        break;
+                    default:
+                        break;
+                }
+
             }
-
-
             // Game.startGame();
 
         }
