@@ -14,7 +14,7 @@ namespace TicTacToe
 
         private void initBoard()
         {
-            for (int i = 0; i <8; i++) 
+            for (int i = 0; i <9; i++) 
             {
                 board[i] = Convert.ToChar(Convert.ToString(i + 1));
             }
