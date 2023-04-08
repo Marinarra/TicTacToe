@@ -11,7 +11,8 @@ namespace TicTacToe
         static Player pc = new Player();
         static Board board = new Board();
         static char flagTurn = ' ';
-        static bool currentlyPlaying;
+        static bool currentlyPlaying,reusableBool;
+
         private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
@@ -78,6 +79,7 @@ namespace TicTacToe
 
         private static void startUpCycle() //start up cycle
         {
+            board.resetBoard();
             updateScreen();
             pc.setPlayerSymbol(' ');
             user.setPlayerSymbol(' ');
@@ -198,23 +200,26 @@ namespace TicTacToe
             WriteLine("\t\t Would you like to play again? Y/N \n");
             WriteLine("-----------------------------------\n");
             ConsoleKeyInfo keyRead = Console.ReadKey();
+            bool inputValid = true;
             do
             {
                 if (keyRead.Key == ConsoleKey.Y)
                 {
-                    board.resetBoard();
-                    return true;
+                    reusableBool = true;
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
-                    return false;
+                    reusableBool = false;
                 }
                 else
                 {
                     WriteLine("Choice unavailable, please try again Y/N \n");
                     keyRead = Console.ReadKey();
+                    inputValid = false;
                 }
-            } while (true);
+            } while (!(inputValid));
+
+            return reusableBool;
 
         }
 
