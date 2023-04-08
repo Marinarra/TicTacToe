@@ -93,19 +93,18 @@ namespace TicTacToe
         }
         private bool checkWinDiagnol(char flag)
         {
+            checkValue = false;
 
             if (board[0] == flag && board[4] == flag && board[8] == flag) // top left to bottom right is filled
             {
-                return true;
+                checkValue = true;
             }
             if (board[2] == flag && board[4] == flag && board[6] == flag) // top right to bottom left is filled
             {
-                return true;
+                checkValue = true;            
             }
-            else
-            {
-                return false;
-            }
+            return checkValue;
+            
         }
 
         public bool checkTieCondition()
