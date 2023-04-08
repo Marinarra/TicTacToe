@@ -36,6 +36,18 @@ namespace TicTacToe
 
         }
 
+        private static void gameStatsSubMenu()
+        {
+            
+
+        
+        }
+
+        private static void exitGame()
+        {
+
+        }
+
         public static int convertAscii(int value)
         {
             if (value <= 57 && value >= 48)
