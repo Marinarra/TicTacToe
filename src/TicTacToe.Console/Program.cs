@@ -27,6 +27,7 @@ namespace TicTacToe
                         gameStatsSubMenu();
                         break;
                     case 3:
+                       exitGame();
                         //exit game
                         break;
                     default:
@@ -67,7 +68,10 @@ namespace TicTacToe
 
         private static void exitGame()
         {
-
+            if(checkIfSure() == true)
+            {
+                Environment.Exit(0);
+            }
         }
         private static bool checkIfSure()
         {
