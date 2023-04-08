@@ -78,23 +78,18 @@ namespace TicTacToe
 
         private bool checkWinVertical(char flag)
         {
-
-            if (board[0] == flag && board[3] == flag && board[6] == flag) // first collumn is filled
+            checkValue = false;
+            for(int i = 0; i < 3; i++)
             {
-                return true;
+                if (board[i] == flag && board[i+3] == flag && board[i+6] == flag) // each collumn 
+                {
+                    if (checkValue == false)
+                    {
+                        checkValue = true;
+                    }
+                } 
             }
-            if (board[1] == flag && board[4] == flag && board[7] == flag) // second collumn is filled
-            {
-                return true;
-            }
-            if (board[2] == flag && board[5] == flag && board[8] == flag) // third collumn is filled
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return checkValue;
         }
         private bool checkWinDiagnol(char flag)
         {
