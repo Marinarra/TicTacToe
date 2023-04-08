@@ -16,17 +16,13 @@ namespace TicTacToe
             gamesPlayed = gamesPlayed + 1;
             setGameTime();
             setTotalGameTIme();
-            setAvgGameTime();
             timer.Reset();
         }
         private static void setGameTime()
         {
             gameTime = timer.Elapsed.TotalSeconds;
         }
-        private static void setAvgGameTime()
-        {
-            avgGameTime = ((totalGameTime) / gamesPlayed);
-        }
+       
         private static void setTotalGameTIme()
         {
             totalGameTime = totalGameTime + gameTime;
@@ -41,6 +37,7 @@ namespace TicTacToe
         }
         public static double getAvgGameTime()
         {
+            avgGameTime = ((totalGameTime) / gamesPlayed);
             return avgGameTime;
         }
      }
