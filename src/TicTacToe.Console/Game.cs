@@ -11,6 +11,7 @@ namespace TicTacToe
         static Player pc = new Player();
         static Board board = new Board();
         static char flagTurn = ' ';
+        static bool currentlyPlaying;
         private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
@@ -99,13 +100,13 @@ namespace TicTacToe
                 WriteLine("Enter Coordinate to place token (1-9)");
 
                 WriteLine("-----------------------------------");
-                ConsoleKeyInfo keyRead = Console.ReadKey();
+                ConsoleKeyInfo keyRead = Console.ReadKey(); 
 
                 keyEntered = convertAscii(Convert.ToInt32(keyRead.Key));
                 if (keyEntered == 0)
                 {
-                    ShutDown();
-                    Environment.Exit(0);
+                    currentlyPlaying = false;
+                    break;
                 }
                 correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
             } while (correctOption == false);
@@ -142,7 +143,7 @@ namespace TicTacToe
                     flagTurn = pc.getSymbol();
                 }
 
-            } while (board.checkWinCondition(pc.getSymbol()) == false && board.checkWinCondition(user.getSymbol()) == false && board.checkTieCondition() == false);
+            } while (board.checkWinCondition(pc.getSymbol()) == false && board.checkWinCondition(user.getSymbol()) == false && board.checkTieCondition() == false && currentlyPlaying == true);
 
             updateScreen();
 
@@ -168,6 +169,10 @@ namespace TicTacToe
         {
             gameTimeStats.stopTime();
             printGameStats();
+            if (currentlyPlaying == true)
+            {
+                currentlyPlaying = checkIfPlayAgain();
+            }
 
         }
         private static void printGameStats()
@@ -216,14 +221,14 @@ namespace TicTacToe
 
         public static void startGame()
         {
-            
+            currentlyPlaying = true;
             do
             {
                 
                 startUpCycle(); //User selects to go first or not & user selects symbol
                 RunCycle();     // User Coordinate input & RNG System choice
                 ShutDown();     //Display Statistics of game and game time played and the average time
-            } while (checkIfPlayAgain() == true);
+            } while ( currentlyPlaying == true);
             
 
         }
