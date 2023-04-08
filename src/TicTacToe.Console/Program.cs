@@ -65,8 +65,23 @@ namespace TicTacToe
             
         }
 
-            private static void exitGame()
+        private static void exitGame()
         {
+
+        }
+        private static bool checkIfSure()
+        {
+            Console.Clear();
+            bool check = false;
+            WriteLine("Close application?");
+            WriteLine("Press anything except Y to go back");
+            WriteLine("Press Y to close application");
+            ConsoleKeyInfo keyRead = Console.ReadKey();
+            if(keyRead.Key == ConsoleKey.Y)
+            {
+                check = true;
+            }
+            return check;
 
         }
 
