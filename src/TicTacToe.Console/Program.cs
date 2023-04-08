@@ -11,6 +11,7 @@ namespace TicTacToe
             int option;
             while (true)
             {
+                Console.Clear();
                 printMenuText();
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
@@ -40,6 +41,8 @@ namespace TicTacToe
         private static void gameStatsSubMenu()
         {
             Console.Clear();
+
+
             WriteLine("***************************************************************************************************\n");
             WriteLine("\t## ##     ##     ##   ##  ### ###            ## ##   #### ##    ##     #### ##   ## ##   \n" +
                       "\t##   ##     ##     ## ##    ##  ##           ##   ##  # ## ##     ##    # ## ##  ##   ##  \n" +
@@ -50,14 +53,19 @@ namespace TicTacToe
                       "\t## ##   ###  ##  ##   ##  ### ###            ## ##    ####    ###  ##   ####     ## ##    \n");
             WriteLine("***************************************************************************************************");
             WriteLine("\n\n-----------------------------------");
-            
+
             WriteLine("\t\t Time spent in game: {0:00:00}" +
                     "\n\t\t Time spent on average: {1:00:00} " +
                     "\n\t\t Total time spent across all games: {2:00:00} ", gameTimeStats.getGameTime(), gameTimeStats.getAvgGameTime(), gameTimeStats.getTotalGameTime());
 
+            WriteLine("-----------------------------------");
+            WriteLine("\t\t Press any button \n");
+            WriteLine("-----------------------------------\n");
+            while (!Console.KeyAvailable) ;
+            
         }
 
-        private static void exitGame()
+            private static void exitGame()
         {
 
         }
