@@ -70,6 +70,10 @@ namespace TicTacToe
         {
             if(checkIfSure() == true)
             {
+                Console.Clear();
+                WriteLine("\n   /|__/,|   (`)' \n"+
+                          "_.| o o  ) _) }\n" +
+                          "-(((---(((--------\n");
                 Environment.Exit(0);
             }
         }
@@ -79,7 +83,7 @@ namespace TicTacToe
             bool check = false;
             WriteLine("Close application?");
             WriteLine("Press anything except Y to go back");
-            WriteLine("Press Y to close application");
+            WriteLine("Press Y to close application\n");
             ConsoleKeyInfo keyRead = Console.ReadKey();
             if(keyRead.Key == ConsoleKey.Y)
             {
