@@ -79,6 +79,7 @@ namespace TicTacToe
 
         private static void startUpCycle() //start up cycle
         {
+            board.resetBoard();
             updateScreen();
             pc.setPlayerSymbol(' ');
             user.setPlayerSymbol(' ');
@@ -204,7 +205,6 @@ namespace TicTacToe
             {
                 if (keyRead.Key == ConsoleKey.Y)
                 {
-                    board.resetBoard();
                     reusableBool = true;
                 }
                 else if (keyRead.Key == ConsoleKey.N)
