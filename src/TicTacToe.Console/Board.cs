@@ -6,7 +6,7 @@ namespace TicTacToe
     {
         private Random rng = new Random();
         private char[] board = new char[9];
-        bool checkValue;
+        private bool checkValue;
         public Board()
         {
             initBoard();
@@ -14,7 +14,7 @@ namespace TicTacToe
 
         private void initBoard()
         {
-            for (int i = 0; i <9; i++) 
+            for (int i = 0; i <8; i++) 
             {
                 board[i] = Convert.ToChar(Convert.ToString(i + 1));
             }
@@ -33,7 +33,6 @@ namespace TicTacToe
                 board[coordinate] = flag;
                 result = true;
             }
-          
             return result;
         }
 
@@ -63,20 +62,20 @@ namespace TicTacToe
 
         private bool checkWinHorizontal(char flag)
         {
-            checkValue = true;
-
-            if (!(board[0] == flag && board[1] == flag && board[2] == flag)) // first row is NOT filled
+            checkValue = false;
+            for (int i = 0; i < 3; i++)
             {
-                if (!(board[3] == flag && board[4] == flag && board[5] == flag)) // second row is NOT filled
+                if (board[i] == flag && board[i + 1] == flag && board[i + 2] == flag)  // each row
                 {
-                    if (!(board[6] == flag && board[7] == flag && board[8] == flag)) // third row is NOT filled
+                    if( checkValue == false)
                     {
-                        checkValue = false;
+                        checkValue = true;
                     }
-                } 
+                }
             }
             return checkValue;
         }
+
         private bool checkWinVertical(char flag)
         {
 
