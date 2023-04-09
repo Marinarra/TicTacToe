@@ -64,9 +64,9 @@ namespace TicTacToe
             WriteLine("   -----------------------------------------");
             WriteLine("   ||\tSystem Wins\t System Losses    ||");
             WriteLine("   ||\t{0}\t\t{1}                 ||", gameTimeStats.userLosses, gameTimeStats.userWins);
-            WriteLine("   -----------------------------------------");
-            WriteLine("\t\tTies: {0}\t", gameTimeStats.ties);
-            WriteLine("-----------------------------------");
+            WriteLine("  -------------------------------------------");
+            WriteLine("  |\t\t  Ties: {0}\t            |", gameTimeStats.ties);
+            WriteLine("  -------------------------------------------");
             WriteLine("\t\t Press any button \n");
             WriteLine("-----------------------------------\n");
             while (!Console.KeyAvailable) ;
