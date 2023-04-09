@@ -110,9 +110,10 @@ namespace TicTacToe
                     currentlyPlaying = false;
                     correctOption = true;
                 }
-               
+                else if (keyEntered > 0)
+                {
                     correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
-                
+                }
             } while (correctOption == false);
         }
         
