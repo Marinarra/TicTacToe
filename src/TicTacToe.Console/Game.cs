@@ -74,7 +74,7 @@ namespace TicTacToe
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
-            } while (true); //Repeat until X or O pressed
+            } while (reusableBool); //Repeat until X or O pressed
         }
 
         private static void startUpCycle() //start up cycle
