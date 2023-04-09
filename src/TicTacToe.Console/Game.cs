@@ -90,7 +90,7 @@ namespace TicTacToe
         private static void gameMenu() //game menu
         {
 
-            bool correctOption;
+            bool correctOption = false;
             int keyEntered;
 
             do
