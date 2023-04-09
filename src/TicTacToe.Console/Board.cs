@@ -14,20 +14,20 @@ namespace TicTacToe
 
         private void initBoard()
         {
-            for (int i = 0; i <9; i++) 
+            for (int i = 0; i < 9; i++)
             {
                 board[i] = Convert.ToChar(Convert.ToString(i + 1));
             }
         }
         public bool checkIfCellAvailable(int coordinate, char flag)
-            
+
         {
             bool result = false;
 
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("\nSpace Taken!");
-            } 
+            }
             else if (coordinate <= 8 || coordinate >= 0)
             {
                 board[coordinate] = flag;
@@ -67,7 +67,7 @@ namespace TicTacToe
             {
                 if (board[i] == flag && board[i + 1] == flag && board[i + 2] == flag)  // each row
                 {
-                    if( checkValue == false)
+                    if (checkValue == false)
                     {
                         checkValue = true;
                     }
@@ -79,15 +79,15 @@ namespace TicTacToe
         private bool checkWinVertical(char flag)
         {
             checkValue = false;
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                if (board[i] == flag && board[i+3] == flag && board[i+6] == flag) // each collumn 
+                if (board[i] == flag && board[i + 3] == flag && board[i + 6] == flag) // each collumn 
                 {
                     if (checkValue == false)
                     {
                         checkValue = true;
                     }
-                } 
+                }
             }
             return checkValue;
         }
@@ -101,10 +101,10 @@ namespace TicTacToe
             }
             if (board[2] == flag && board[4] == flag && board[6] == flag) // top right to bottom left is filled
             {
-                checkValue = true;            
+                checkValue = true;
             }
             return checkValue;
-            
+
         }
 
         public bool checkTieCondition()
@@ -113,6 +113,7 @@ namespace TicTacToe
             int count = 0;
             for (int i = 0; i < board.Length; i++)
             {
+
                 if (board[i] == 'X' || board[i] == 'O')
                 {
                     count++;
@@ -120,25 +121,21 @@ namespace TicTacToe
             }
             if (count == 9)
             {
-               if(checkWinCondition('X') == false && checkWinCondition('O') == false)
+                if (checkWinCondition('X') == false && checkWinCondition('O') == false)
                 {
                     isTied = true;
                 }
             }
             return isTied;
         }
-        
+
 
         public bool checkWinCondition(char flag)
         {
-            if (checkWinVertical(flag) == true)
-            { return true; }
-            else if (checkWinHorizontal(flag) == true)
-            { return true; }
-            else if (checkWinDiagnol(flag) == true)
-            { return true; }
-            else
-            { return false; }
+            checkValue = false;
+            if (checkWinVertical(flag) || checkWinHorizontal(flag) || checkWinDiagnol(flag))
+            { checkValue = true; }
+            return checkValue;
 
         }
     }
