@@ -68,7 +68,7 @@ namespace TicTacToe
             WriteLine("  |\t\t  Ties: {0}\t            |", gameTimeStats.ties);
             WriteLine("  -------------------------------------------");
             WriteLine("\t\t Press any button \n");
-            WriteLine("-----------------------------------\n");
+            WriteLine(" - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
             while (!Console.KeyAvailable) ;
             
         }
