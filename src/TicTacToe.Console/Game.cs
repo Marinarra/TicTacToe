@@ -129,23 +129,26 @@ namespace TicTacToe
         private static void RunCycle()
         {
             gameTimeStats.startTimer();
+            reusableBool = false;
             do
             {
-                if (flagTurn == pc.getSymbol())
+                if (flagTurn == pc.getSymbol() && reusableBool != true)
                 {
                     board.systemChoose(flagTurn);
                     flagTurn = user.getSymbol();
                     updateScreen();
                 }
 
-                if (board.checkWinCondition(pc.getSymbol()) == false && board.checkTieCondition() == false && (flagTurn == user.getSymbol()))
+                reusableBool = board.checkWinCondition(pc.getSymbol()) | board.checkWinCondition(user.getSymbol()) | board.checkTieCondition();
+
+                if (flagTurn == user.getSymbol()  && reusableBool != true)
                 {
                     updateScreen();
                     gameMenu();
                     flagTurn = pc.getSymbol();
                 }
 
-            } while (board.checkWinCondition(pc.getSymbol()) == false && board.checkWinCondition(user.getSymbol()) == false && board.checkTieCondition() == false && currentlyPlaying == true);
+            } while (reusableBool != true && currentlyPlaying == true);
 
             updateScreen();
 
