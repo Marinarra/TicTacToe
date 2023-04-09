@@ -55,20 +55,20 @@ namespace TicTacToe
             {
                 WriteLine("Would you like to play as 'X' or 'O'' ?");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
-
+                reusableBool = true;
                 if (keyRead.Key == ConsoleKey.O) //User chooses O
                 {
                     WriteLine("\nUser has chosen 'O'"); 
                     user.setPlayerSymbol('O');
                     pc.setPlayerSymbol('X');
-                    break;
+                    reusableBool = false;
                 }
                 else if (keyRead.Key == ConsoleKey.X)   //User chooses X
                 {
                     WriteLine("\nUser has chosen 'X'");
                     user.setPlayerSymbol('X');
                     pc.setPlayerSymbol('O');
-                    break;
+                    reusableBool = false;
                 }
                 else
                 {
