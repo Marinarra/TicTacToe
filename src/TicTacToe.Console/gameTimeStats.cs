@@ -7,6 +7,7 @@ namespace TicTacToe
         static Stopwatch timer = new Stopwatch();
         private static double gameTime = 0.00, avgGameTime = 0.00,totalGameTime = 0.00;
         private static int gamesPlayed = 0;
+        public static int userWins = 0, userLosses = 0, ties = 0;
         public static void startTimer()
         {
             timer.Start();
@@ -40,5 +41,14 @@ namespace TicTacToe
             avgGameTime = ((totalGameTime) / gamesPlayed);
             return avgGameTime;
         }
+
+        public static void setGameWinLoss(int wins,int losses, int userTies)
+        {
+            userWins = wins;
+            userLosses = losses;
+            ties = userTies;
+        }
+
+        
      }
 }
