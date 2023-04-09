@@ -114,7 +114,7 @@ namespace TicTacToe
                 {
                     correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
                 }
-            } while (correctOption == false);
+            } while (correctOption == false && currentlyPlaying == true);
         }
         
         private static int convertAscii(int value)
