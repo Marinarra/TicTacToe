@@ -62,9 +62,9 @@ namespace TicTacToe
             WriteLine("   ||\tUser Wins\t User Losses      ||");
             WriteLine("   ||\t{0}\t\t{1}                 ||", gameTimeStats.userWins, gameTimeStats.userLosses);
             WriteLine("   -----------------------------------------");
-            WriteLine("\tSystem Wins\t System Losses ");
-            WriteLine("\t{0}\t\t{1}", gameTimeStats.userLosses, gameTimeStats.userWins);
-            WriteLine("-----------------------------------");
+            WriteLine("   ||\tSystem Wins\t System Losses    ||");
+            WriteLine("   ||\t{0}\t\t{1}                 ||", gameTimeStats.userLosses, gameTimeStats.userWins);
+            WriteLine("   -----------------------------------------");
             WriteLine("\t\tTies: {0}\t", gameTimeStats.ties);
             WriteLine("-----------------------------------");
             WriteLine("\t\t Press any button \n");
