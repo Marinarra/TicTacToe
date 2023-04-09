@@ -90,7 +90,7 @@ namespace TicTacToe
         private static void gameMenu() //game menu
         {
 
-            bool correctOption;
+            bool correctOption = false;
             int keyEntered;
 
             do
@@ -108,10 +108,13 @@ namespace TicTacToe
                 if (keyEntered == 0)
                 {
                     currentlyPlaying = false;
-                    break;
+                    correctOption = true;
                 }
-                correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
-            } while (correctOption == false);
+                else if (keyEntered > 0)
+                {
+                    correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
+                }
+            } while (correctOption == false && currentlyPlaying == true);
         }
         
         private static int convertAscii(int value)
