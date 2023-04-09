@@ -81,6 +81,7 @@ namespace TicTacToe
                 WriteLine("\n   /|__/,|   (`)' \n"+
                           "_.| o o  ) _) }\n" +
                           "-(((---(((--------\n");
+                WriteLine(" Good Bye!");
                 Environment.Exit(0);
             }
         }
