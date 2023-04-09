@@ -40,5 +40,14 @@ namespace TicTacToe
             avgGameTime = ((totalGameTime) / gamesPlayed);
             return avgGameTime;
         }
+
+        public static void setGameWinLoss(int wins,int losses, int userTies)
+        {
+            userWins = wins;
+            userLosses = losses;
+            ties = userTies;
+        }
+
+        
      }
 }
