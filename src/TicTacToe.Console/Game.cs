@@ -173,27 +173,13 @@ namespace TicTacToe
         {
             gameTimeStats.stopTime();
             gameTimeStats.setGameWinLoss(user.getPlayerWins(), user.getPlayerLosses(), user.getTies());
-            printGameStats();
             if (currentlyPlaying == true)
             {
                 currentlyPlaying = checkIfPlayAgain();
             }
 
         }
-        private static void printGameStats()
-        {
-            WriteLine("-----------------------------------");
-            WriteLine("\tUser Wins\t User Losses ");
-            WriteLine("\t{0}\t\t{1}", user.getPlayerWins(), user.getPlayerLosses());
-            WriteLine("-----------------------------------");
-            WriteLine("\tSystem Wins\t System Losses ");
-            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerLosses());
-            WriteLine("Times Tied = {0}", user.getTies());
-            WriteLine("-----------------------------------");
-            WriteLine("\t\t Time spent in game: {0:00:00}" +
-                    "\n\t\t Time spent on average: {1:00:00} " +
-                    "\n\t\t Total time spent across all games: {2:00:00} ",gameTimeStats.getGameTime(), gameTimeStats.getAvgGameTime(),gameTimeStats.getTotalGameTime());
-        }
+        
 
         private static bool checkIfPlayAgain()
         {
