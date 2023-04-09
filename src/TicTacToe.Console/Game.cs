@@ -141,7 +141,7 @@ namespace TicTacToe
                     flagTurn = user.getSymbol();
                     updateScreen();
                 }
-                reusableBool = board.checkWinCondition(pc.getSymbol()) | board.checkWinCondition(user.getSymbol()) | board.checkTieCondition(); // checks if pc win OR user win OR tie
+                reusableBool = board.checkWinCondition(pc.getSymbol()) || board.checkWinCondition(user.getSymbol()) || board.checkTieCondition(); // checks if pc win OR user win OR tie
 
                 if (flagTurn == user.getSymbol()  && reusableBool != true)  // user turn
                 {
