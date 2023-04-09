@@ -172,6 +172,7 @@ namespace TicTacToe
         private static void ShutDown()
         {
             gameTimeStats.stopTime();
+            gameTimeStats.setGameWinLoss(user.getPlayerWins(), user.getPlayerLosses(), user.getTies());
             printGameStats();
             if (currentlyPlaying == true)
             {
@@ -192,7 +193,6 @@ namespace TicTacToe
             WriteLine("\t\t Time spent in game: {0:00:00}" +
                     "\n\t\t Time spent on average: {1:00:00} " +
                     "\n\t\t Total time spent across all games: {2:00:00} ",gameTimeStats.getGameTime(), gameTimeStats.getAvgGameTime(),gameTimeStats.getTotalGameTime());
-
         }
 
         private static bool checkIfPlayAgain()
