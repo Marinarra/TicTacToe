@@ -55,7 +55,7 @@ namespace TicTacToe
             WriteLine("***************************************************************************************************");
             WriteLine("\n\n  ---------------------------------------------------------");
 
-            WriteLine("  |\t\t Time spent in game: {0:00:00}                |" +
+            WriteLine("  |\t\t Time spent in previous game: {0:00:00}       |" +
                     "\n  |\t\t Time spent on average: {1:00:00}               |" +
                     "\n  |\t\t Total time spent across all games: {2:00:00} |", gameTimeStats.getGameTime(), gameTimeStats.getAvgGameTime(), gameTimeStats.getTotalGameTime());
             WriteLine("--------------------------------------------------------------------------------------------------------------------");
@@ -81,6 +81,7 @@ namespace TicTacToe
                 WriteLine("\n   /|__/,|   (`)' \n"+
                           "_.| o o  ) _) }\n" +
                           "-(((---(((--------\n");
+                WriteLine(" Good Bye!");
                 Environment.Exit(0);
             }
         }
