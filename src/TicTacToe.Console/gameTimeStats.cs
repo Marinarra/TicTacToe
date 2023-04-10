@@ -1,48 +1,54 @@
 ﻿using System.Diagnostics;
 namespace TicTacToe
 {
-      public class gameTimeStats
+      public static class gameTimeStats
     
       {
-
-        Stopwatch timer = new Stopwatch();
-        private double gameTime = 0.00, avgGameTime = 0.00,totalGameTime = 0.00;
-        private int gamesPlayed = 0;
-        public void startTimer()
+        static Stopwatch timer = new Stopwatch();
+        private static double gameTime = 0.00, avgGameTime = 0.00,totalGameTime = 0.00;
+        private static int gamesPlayed = 0;
+        public static int userWins = 0, userLosses = 0, ties = 0;
+        public static void startTimer()
         {
             timer.Start();
         }
-        public void stopTime()
+        public static void stopTime()
         {
             gamesPlayed = gamesPlayed + 1;
             setGameTime();
             setTotalGameTIme();
-            setAvgGameTime();
             timer.Reset();
         }
-        private void setGameTime()
+        private static void setGameTime()
         {
             gameTime = timer.Elapsed.TotalSeconds;
         }
-        private void setAvgGameTime()
-        {
-            avgGameTime = ((totalGameTime) / gamesPlayed);
-        }
-        private void setTotalGameTIme()
+       
+        private static void setTotalGameTIme()
         {
             totalGameTime = totalGameTime + gameTime;
         }
-        public double getTotalGameTime()
+        public static double getTotalGameTime()
         {
             return totalGameTime;
         }
-        public double getGameTime()
+        public static double getGameTime()
         {
             return gameTime;
         }
-        public double getAvgGameTime()
+        public static double getAvgGameTime()
         {
+            avgGameTime = ((totalGameTime) / gamesPlayed);
             return avgGameTime;
         }
+
+        public static void setGameWinLoss(int wins,int losses, int userTies)
+        {
+            userWins = wins;
+            userLosses = losses;
+            ties = userTies;
+        }
+
+        
      }
 }

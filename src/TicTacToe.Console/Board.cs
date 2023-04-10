@@ -6,7 +6,7 @@ namespace TicTacToe
     {
         private Random rng = new Random();
         private char[] board = new char[9];
-
+        private bool checkValue;
         public Board()
         {
             initBoard();
@@ -20,20 +20,19 @@ namespace TicTacToe
             }
         }
         public bool checkIfCellAvailable(int coordinate, char flag)
-            
+
         {
             bool result = false;
 
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("\nSpace Taken!");
-            } 
+            }
             else if (coordinate <= 8 || coordinate >= 0)
             {
                 board[coordinate] = flag;
                 result = true;
             }
-          
             return result;
         }
 
@@ -63,92 +62,80 @@ namespace TicTacToe
 
         private bool checkWinHorizontal(char flag)
         {
-
-            if (board[0] == flag && board[1] == flag && board[2] == flag) // first row is filled
+            checkValue = false;
+            for (int i = 0; i < 3; i++)
             {
-                return true;
+                if (board[i] == flag && board[i + 1] == flag && board[i + 2] == flag)  // each row
+                {
+                    if (checkValue == false)
+                    {
+                        checkValue = true;
+                    }
+                }
             }
-            if (board[3] == flag && board[4] == flag && board[5] == flag) // second row is filled
-            {
-                return true;
-            }
-            if (board[6] == flag && board[7] == flag && board[8] == flag) // third row is filled
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return checkValue;
         }
+
         private bool checkWinVertical(char flag)
         {
-
-            if (board[0] == flag && board[3] == flag && board[6] == flag) // first collumn is filled
+            checkValue = false;
+            for (int i = 0; i < 3; i++)
             {
-                return true;
+                if (board[i] == flag && board[i + 3] == flag && board[i + 6] == flag) // each collumn 
+                {
+                    if (checkValue == false)
+                    {
+                        checkValue = true;
+                    }
+                }
             }
-            if (board[1] == flag && board[4] == flag && board[7] == flag) // second collumn is filled
-            {
-                return true;
-            }
-            if (board[2] == flag && board[5] == flag && board[8] == flag) // third collumn is filled
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return checkValue;
         }
         private bool checkWinDiagnol(char flag)
         {
+            checkValue = false;
 
             if (board[0] == flag && board[4] == flag && board[8] == flag) // top left to bottom right is filled
             {
-                return true;
+                checkValue = true;
             }
             if (board[2] == flag && board[4] == flag && board[6] == flag) // top right to bottom left is filled
             {
-                return true;
+                checkValue = true;
             }
-            else
-            {
-                return false;
-            }
+            return checkValue;
+
         }
 
         public bool checkTieCondition()
         {
+            bool isTied = false;
             int count = 0;
             for (int i = 0; i < board.Length; i++)
             {
+
                 if (board[i] == 'X' || board[i] == 'O')
                 {
                     count++;
                 }
             }
-            if (count == 8)
+            if (count == 9)
             {
-                return true;
+                if (checkWinCondition('X') == false && checkWinCondition('O') == false)
+                {
+                    isTied = true;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return isTied;
         }
-        
+
 
         public bool checkWinCondition(char flag)
         {
-            if (checkWinVertical(flag) == true)
-            { return true; }
-            else if (checkWinHorizontal(flag) == true)
-            { return true; }
-            else if (checkWinDiagnol(flag) == true)
-            { return true; }
-            else
-            { return false; }
+            checkValue = false;
+            if (checkWinVertical(flag) || checkWinHorizontal(flag) || checkWinDiagnol(flag))
+            { checkValue = true; }
+            return checkValue;
 
         }
     }

@@ -11,7 +11,8 @@ namespace TicTacToe
         static Player pc = new Player();
         static Board board = new Board();
         static char flagTurn = ' ';
-        static gameTimeStats timerStats = new gameTimeStats();
+        static bool currentlyPlaying,reusableBool;
+
         private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
@@ -54,30 +55,31 @@ namespace TicTacToe
             {
                 WriteLine("Would you like to play as 'X' or 'O'' ?");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
-
+                reusableBool = true;
                 if (keyRead.Key == ConsoleKey.O) //User chooses O
                 {
                     WriteLine("\nUser has chosen 'O'"); 
                     user.setPlayerSymbol('O');
                     pc.setPlayerSymbol('X');
-                    break;
+                    reusableBool = false;
                 }
                 else if (keyRead.Key == ConsoleKey.X)   //User chooses X
                 {
                     WriteLine("\nUser has chosen 'X'");
                     user.setPlayerSymbol('X');
                     pc.setPlayerSymbol('O');
-                    break;
+                    reusableBool = false;
                 }
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
-            } while (true); //Repeat until X or O pressed
+            } while (reusableBool); //Repeat until X or O pressed
         }
 
         private static void startUpCycle() //start up cycle
         {
+            board.resetBoard();
             updateScreen();
             pc.setPlayerSymbol(' ');
             user.setPlayerSymbol(' ');
@@ -88,9 +90,8 @@ namespace TicTacToe
         private static void gameMenu() //game menu
         {
 
-            bool correctOption;
+            bool correctOption = false;
             int keyEntered;
-            int choice;
 
             do
             {
@@ -101,40 +102,57 @@ namespace TicTacToe
                 WriteLine("Enter Coordinate to place token (1-9)");
 
                 WriteLine("-----------------------------------");
-                ConsoleKeyInfo keyRead = Console.ReadKey();
+                ConsoleKeyInfo keyRead = Console.ReadKey(); 
 
-                choice = Convert.ToInt32(keyRead.Key);
-                keyEntered = choice - 48;
+                keyEntered = convertAscii(Convert.ToInt32(keyRead.Key));
                 if (keyEntered == 0)
                 {
-                    ShutDown();
-                    Environment.Exit(0);
+                    currentlyPlaying = false;
+                    correctOption = true;
                 }
-                correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
-            } while (correctOption == false);
+                else if (keyEntered > 0)
+                {
+                    correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
+                }
+            } while (correctOption == false && currentlyPlaying == true);
         }
         
+        private static int convertAscii(int value)
+        {
+            if(value <= 57 && value >= 48)
+            {
+                value -= 48;
+            } 
+            else if(value >= 96 && value <= 105){
+                value -= 96;
+            }
+            return value;
+        }
 
         private static void RunCycle()
         {
-            timerStats.startTimer();
+            gameTimeStats.startTimer();
+            bool isGameWon = false; //  Game won/tied = true, game not won/tied = false
             do
             {
-                if (flagTurn == pc.getSymbol())
+                isGameWon = (board.checkWinCondition(pc.getSymbol()) || board.checkWinCondition(user.getSymbol()) || board.checkTieCondition()); // checks if pc win OR user win OR tie
+                if (flagTurn == pc.getSymbol() && isGameWon == false)  // system turn
                 {
                     board.systemChoose(flagTurn);
                     flagTurn = user.getSymbol();
                     updateScreen();
                 }
 
-                if (board.checkWinCondition(pc.getSymbol()) == false && board.checkTieCondition() == false && (flagTurn == user.getSymbol()))
+                isGameWon = (board.checkWinCondition(pc.getSymbol()) || board.checkWinCondition(user.getSymbol()) || board.checkTieCondition()); // checks if pc win OR user win OR tie
+
+                if (flagTurn == user.getSymbol()  && isGameWon == false)  // user turn
                 {
                     updateScreen();
                     gameMenu();
                     flagTurn = pc.getSymbol();
                 }
 
-            } while (board.checkWinCondition(pc.getSymbol()) == false && board.checkWinCondition(user.getSymbol()) == false && board.checkTieCondition() == false);
+            } while (isGameWon == false && currentlyPlaying == true); 
 
             updateScreen();
 
@@ -148,8 +166,7 @@ namespace TicTacToe
                     user.addPlayerWin();
                     pc.addPlayerLoss();
                 }
-            
-            else if (board.checkTieCondition())
+            else if(board.checkTieCondition() == true)
             {
                 pc.addTie();
                 user.addTie();  
@@ -159,25 +176,15 @@ namespace TicTacToe
 
         private static void ShutDown()
         {
-            timerStats.stopTime();
-            printGameStats();
+            gameTimeStats.stopTime();
+            gameTimeStats.setGameWinLoss(user.getPlayerWins(), user.getPlayerLosses(), user.getTies());
+            if (currentlyPlaying == true)
+            {
+                currentlyPlaying = checkIfPlayAgain();
+            }
 
         }
-        private static void printGameStats()
-        {
-            WriteLine("-----------------------------------");
-            WriteLine("\tUser Wins\t User Losses ");
-            WriteLine("\t{0}\t\t{1}", user.getPlayerWins(), user.getPlayerLosses());
-            WriteLine("-----------------------------------");
-            WriteLine("\tSystem Wins\t System Losses ");
-            WriteLine("\t{0}\t\t{1}", pc.getPlayerWins(), pc.getPlayerLosses());
-            WriteLine("Times Tied = {0}", user.getTies());
-            WriteLine("-----------------------------------");
-            WriteLine("\t\t Time spent in game: {0:00:00}" +
-                    "\n\t\t Time spent on average: {1:00:00} " +
-                    "\n\t\t Total time spent across all games: {2:00:00} ",timerStats.getGameTime(), timerStats.getAvgGameTime(),timerStats.getTotalGameTime());
-
-        }
+        
 
         private static bool checkIfPlayAgain()
         {
@@ -186,37 +193,40 @@ namespace TicTacToe
             WriteLine("\t\t Would you like to play again? Y/N \n");
             WriteLine("-----------------------------------\n");
             ConsoleKeyInfo keyRead = Console.ReadKey();
+            bool inputValid = true;
             do
             {
                 if (keyRead.Key == ConsoleKey.Y)
                 {
-                    board.resetBoard();
-                    return true;
+                    reusableBool = true;
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
-                    return false;
+                    reusableBool = false;
                 }
                 else
                 {
                     WriteLine("Choice unavailable, please try again Y/N \n");
                     keyRead = Console.ReadKey();
+                    inputValid = false;
                 }
-            } while (true);
+            } while (!(inputValid));
+
+            return reusableBool;
 
         }
 
 
         public static void startGame()
         {
-            
+            currentlyPlaying = true;
             do
             {
                 
                 startUpCycle(); //User selects to go first or not & user selects symbol
                 RunCycle();     // User Coordinate input & RNG System choice
                 ShutDown();     //Display Statistics of game and game time played and the average time
-            } while (checkIfPlayAgain() == true);
+            } while ( currentlyPlaying == true);
             
 
         }
