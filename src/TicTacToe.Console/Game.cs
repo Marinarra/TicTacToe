@@ -135,7 +135,7 @@ namespace TicTacToe
             bool isGameWon = false; //  Game won/tied = true, game not won/tied = false
             do
             {
-
+                isGameWon = (board.checkWinCondition(pc.getSymbol()) || board.checkWinCondition(user.getSymbol()) || board.checkTieCondition()); // checks if pc win OR user win OR tie
                 if (flagTurn == pc.getSymbol() && isGameWon == false)  // system turn
                 {
                     board.systemChoose(flagTurn);
