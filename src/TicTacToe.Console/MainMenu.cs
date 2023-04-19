@@ -2,7 +2,7 @@
 using static System.Console;
 namespace TicTacToe
 {
-    public class Program
+    public class MainMenu
     {
 
 
