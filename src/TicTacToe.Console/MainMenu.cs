@@ -2,7 +2,7 @@
 using static System.Console;
 namespace TicTacToe
 {
-    public class Program
+    public class MainMenu
     {
 
 
@@ -131,7 +131,7 @@ namespace TicTacToe
             for (int i = 0; i < 3; i++)
                 {
                     WriteLine("\t  -||============-+-> \n" +
-                              "\t [{0}] {1} {0} -+-> Press {0} (=^._.^=)∫ \n" +
+                              "\t [→_→] {1} -+-> Press {0} (=^._.^=)∫ \n" +
                               "\t  -||============-+-> \n\n", i + 1, options[i]);
                 }
             }
