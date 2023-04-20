@@ -202,6 +202,7 @@ namespace TicTacToe
                 if (keyRead.Key == ConsoleKey.Y)
                 {
                     reusableBool = true;
+                    replay = 'y';
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
