@@ -224,6 +224,7 @@ namespace TicTacToe
         public static void startGame()
         {
             currentlyPlaying = true;
+            replay = 'n';
             do
             {
                 
