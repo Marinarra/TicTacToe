@@ -10,7 +10,7 @@ namespace TicTacToe
         static Player user = new Player();
         static Player pc = new Player();
         static Board board = new Board();
-        static char flagTurn = ' ';
+        static char flagTurn = ' ',replay;
         static bool currentlyPlaying,reusableBool;
 
         private static void updateScreen() //Updates game screen 
@@ -81,10 +81,13 @@ namespace TicTacToe
         {
             board.resetBoard();
             updateScreen();
-            pc.setPlayerSymbol(' ');
-            user.setPlayerSymbol(' ');
-            updateScreen();
-            userChooseSymbol();
+            if (replay == 'n')
+            {
+                pc.setPlayerSymbol(' ');
+                user.setPlayerSymbol(' ');
+                updateScreen();
+                userChooseSymbol();
+            }
             checkIfUserFirst();
         }
         private static void gameMenu() //game menu
@@ -199,6 +202,7 @@ namespace TicTacToe
                 if (keyRead.Key == ConsoleKey.Y)
                 {
                     reusableBool = true;
+                    replay = 'y';
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
@@ -220,6 +224,7 @@ namespace TicTacToe
         public static void startGame()
         {
             currentlyPlaying = true;
+            replay = 'n';
             do
             {
                 
