@@ -55,9 +55,9 @@ namespace TicTacToe
             WriteLine("***************************************************************************************************");
             WriteLine("\n\n  ---------------------------------------------------------");
 
-            WriteLine("  |\t\t Time spent in previous game: {0:00:00}       |" +
-                    "\n  |\t\t Time spent on average: {1:00:00}               |" +
-                    "\n  |\t\t Total time spent across all games: {2:00:00} |", gameTimeStats.getGameTime(), gameTimeStats.getAvgGameTime(), gameTimeStats.getTotalGameTime());
+            WriteLine("{2,20} {0,20} {1:00:00} {2,2}", "Time spent in previous game:", gameTimeStats.getGameTime(),"||");
+            WriteLine("{2,20} {0,20} {1:00:00} {2,8}", "Time spent on average:", (gameTimeStats.getTotalGameTime() > 0) ? gameTimeStats.getAvgGameTime() : 0, "||");
+            WriteLine("{2,20} {0,20} {1:00:00} {2,5}", "Total time spent overall:", gameTimeStats.getTotalGameTime(), "||");
             WriteLine("--------------------------------------------------------------------------------------------------------------------");
             WriteLine("   ||\tUser Wins\t User Losses      ||");
             WriteLine("   ||\t{0}\t\t{1}                 ||", gameTimeStats.userWins, gameTimeStats.userLosses);
