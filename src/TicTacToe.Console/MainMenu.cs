@@ -101,6 +101,11 @@ namespace TicTacToe
                 Environment.Exit(0);
             }
         }
+
+        /// <summary>
+        /// Prompts the user to confirm they wish to exit the application.
+        /// </summary>
+        /// <returns> A boolean,the value is true if the user presses the 'Y' key and is false if anything else is pressed.</returns>
         private static bool checkIfSure()
         {
             Console.Clear();
