@@ -85,6 +85,10 @@ namespace TicTacToe
             
         }
 
+        /// <summary>
+        /// Confirms that user wants to exit application when exit option on main menu is chosen.
+        /// After confirmation a goodbye screen is printed, otherwise the user is returned to the main menu.
+        /// </summary>
         private static void exitGame()
         {
             if(checkIfSure() == true)
