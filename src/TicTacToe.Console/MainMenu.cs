@@ -47,6 +47,10 @@ namespace TicTacToe
 
         }
 
+        /// <summary>
+        /// Displays statistics collected during games for user to view.
+        /// Shows recent game time,average and total game time. Also shows wins/losses/draws of users and system.
+        /// </summary>
         private static void gameStatsSubMenu()
         {
             Console.Clear();
