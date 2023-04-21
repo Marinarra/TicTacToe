@@ -9,7 +9,11 @@ namespace TicTacToe
     public class MainMenu
     {
 
-
+        /// <summary>
+        /// Runs prints a menu screen to console forever until option is chosen/game exited via option. 
+        /// Detects when user clicks a key and runs the corresponding function.
+        /// </summary>
+         
         static void Main(string[] args)
         {
             int option;
