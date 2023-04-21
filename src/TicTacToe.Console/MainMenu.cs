@@ -1,7 +1,11 @@
 ﻿using System;
 using static System.Console;
 namespace TicTacToe
-{
+{ 
+    /// <summary>
+    /// Displays a main menu screen with options for the user to select. 
+    /// User starts, exits and views game stats via menu.
+    /// </summary>
     public class MainMenu
     {
 
