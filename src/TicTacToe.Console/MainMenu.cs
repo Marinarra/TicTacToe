@@ -1,11 +1,19 @@
 ﻿using System;
 using static System.Console;
 namespace TicTacToe
-{
+{ 
+    /// <summary>
+    /// Displays a main menu screen with options for the user to select. 
+    /// User starts, exits and views game stats via menu.
+    /// </summary>
     public class MainMenu
     {
 
-
+        /// <summary>
+        /// Runs prints a menu screen to console forever until option is chosen/game exited via option. 
+        /// Detects when user clicks a key and runs the corresponding function.
+        /// </summary>
+         
         static void Main(string[] args)
         {
             int option;
@@ -39,6 +47,10 @@ namespace TicTacToe
 
         }
 
+        /// <summary>
+        /// Displays statistics collected during games for user to view.
+        /// Shows recent game time,average and total game time. Also shows wins/losses/draws of users and system.
+        /// </summary>
         private static void gameStatsSubMenu()
         {
             Console.Clear();
@@ -73,6 +85,10 @@ namespace TicTacToe
             
         }
 
+        /// <summary>
+        /// Confirms that user wants to exit application when exit option on main menu is chosen.
+        /// After confirmation a goodbye screen is printed, otherwise the user is returned to the main menu.
+        /// </summary>
         private static void exitGame()
         {
             if(checkIfSure() == true)
@@ -85,6 +101,11 @@ namespace TicTacToe
                 Environment.Exit(0);
             }
         }
+
+        /// <summary>
+        /// Prompts the user to confirm they wish to exit the application.
+        /// </summary>
+        /// <returns> A boolean,the value is true if the user presses the 'Y' key and is false if anything else is pressed.</returns>
         private static bool checkIfSure()
         {
             Console.Clear();
@@ -100,19 +121,29 @@ namespace TicTacToe
             return check;
 
         }
-
+        
+        /// <summary>
+        /// Converts the value from the unicode value of the key to the corresponding integer.
+        /// </summary>
+        /// <param name="value"> Represents the unicode value of the key pressed by the user</param>
+        /// <returns> A bit-32 integer, converted from unicode to its intended value.
+        /// (keyboard numbers 0 to 9 = 48 to 57) (numpad numbers 0 to 9 = 96 to 105) </returns>
         public static int convertAscii(int value)
         {
-            if (value <= 57 && value >= 48)
+            if (value <= 57 && value >= 48)  // If numbers on top of keyboard used. 48 = 0
             {
                 value -= 48;
             }
-            else if (value >= 96 && value <= 105)
+            else if (value >= 96 && value <= 105) // If numbers on numpad are used 96 = 0
             {
                 value -= 96;
             }
             return value;
         }
+
+        /// <summary>
+        /// Displays main menu to console, uses a loop to loop through 3 options and print each below the previous option and displays the number associated with each option.
+        /// </summary>
         private static void printMenuText()
             {
             WriteLine("***************************************************************************************************");
