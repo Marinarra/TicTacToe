@@ -140,6 +140,10 @@ namespace TicTacToe
             }
             return value;
         }
+
+        /// <summary>
+        /// Displays main menu to console, uses a loop to loop through 3 options and print each below the previous option and displays the number associated with each option.
+        /// </summary>
         private static void printMenuText()
             {
             WriteLine("***************************************************************************************************");
