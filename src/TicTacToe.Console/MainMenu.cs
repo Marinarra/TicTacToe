@@ -121,14 +121,20 @@ namespace TicTacToe
             return check;
 
         }
-
+        
+        /// <summary>
+        /// Converts the value from the unicode value of the key to the corresponding integer.
+        /// </summary>
+        /// <param name="value"> Represents the unicode value of the key pressed by the user</param>
+        /// <returns> A bit-32 integer, converted from unicode to its intended value.
+        /// (keyboard numbers 0 to 9 = 48 to 57) (numpad numbers 0 to 9 = 96 to 105) </returns>
         public static int convertAscii(int value)
         {
-            if (value <= 57 && value >= 48)
+            if (value <= 57 && value >= 48)  // If numbers on top of keyboard used. 48 = 0
             {
                 value -= 48;
             }
-            else if (value >= 96 && value <= 105)
+            else if (value >= 96 && value <= 105) // If numbers on numpad are used 96 = 0
             {
                 value -= 96;
             }
