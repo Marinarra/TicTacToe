@@ -7,8 +7,8 @@ namespace TicTacToe
     public static class Game
     {
         //Declaring Instances//
-        static Player user = new Player();
-        static Player pc = new Player();
+        static Player user = new Player(' ',0,0,0);
+        static Player pc = new Player(' ',0,0,0);
         static Board board = new Board();
         static char flagTurn = ' ',replay;
         static bool currentlyPlaying,reusableBool;
@@ -18,7 +18,7 @@ namespace TicTacToe
             Console.Clear();
             WriteLine("(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
             board.printBoard();
-            WriteLine("\n\t\t\t\t\t User: {0} \t System: {1}", user.getSymbol(), pc.getSymbol());
+            WriteLine("\n\t\t\t\t\t User: {0} \t System: {1}", user.symbol, pc.symbol);
             WriteLine("\n(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
         }
 
@@ -33,13 +33,13 @@ namespace TicTacToe
                 if (keyRead.Key == ConsoleKey.Y)
                 {
                     WriteLine("\n User Goes First!");
-                    flagTurn = user.getSymbol();
+                    flagTurn = user.symbol;
                     correctSymbol = true;
                 }
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     WriteLine("\n System Goes First!");
-                    flagTurn = pc.getSymbol();
+                    flagTurn = pc.symbol;
                     correctSymbol = true;
                 }
                 else
@@ -59,15 +59,15 @@ namespace TicTacToe
                 if (keyRead.Key == ConsoleKey.O) //User chooses O
                 {
                     WriteLine("\nUser has chosen 'O'"); 
-                    user.setPlayerSymbol('O');
-                    pc.setPlayerSymbol('X');
+                    user.symbol = ('O');
+                    pc.symbol = ('X');
                     reusableBool = false;
                 }
                 else if (keyRead.Key == ConsoleKey.X)   //User chooses X
                 {
                     WriteLine("\nUser has chosen 'X'");
-                    user.setPlayerSymbol('X');
-                    pc.setPlayerSymbol('O');
+                    user.symbol = ('X');
+                    pc.symbol = ('O');
                     reusableBool = false;
                 }
                 else
@@ -83,8 +83,8 @@ namespace TicTacToe
             updateScreen();
             if (replay == 'n')
             {
-                pc.setPlayerSymbol(' ');
-                user.setPlayerSymbol(' ');
+                pc.symbol = (' ');
+                user.symbol = (' ');
                 updateScreen();
                 userChooseSymbol();
             }
@@ -138,41 +138,41 @@ namespace TicTacToe
             bool isGameWon = false; //  Game won/tied = true, game not won/tied = false
             do
             {
-                isGameWon = (board.checkWinCondition(pc.getSymbol()) || board.checkWinCondition(user.getSymbol()) || board.checkTieCondition()); // checks if pc win OR user win OR tie
-                if (flagTurn == pc.getSymbol() && isGameWon == false)  // system turn
+                isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
+                if (flagTurn == pc.symbol && isGameWon == false)  // system turn
                 {
                     board.systemChoose(flagTurn);
-                    flagTurn = user.getSymbol();
+                    flagTurn = user.symbol;
                     updateScreen();
                 }
 
-                isGameWon = (board.checkWinCondition(pc.getSymbol()) || board.checkWinCondition(user.getSymbol()) || board.checkTieCondition()); // checks if pc win OR user win OR tie
+                isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
 
-                if (flagTurn == user.getSymbol()  && isGameWon == false)  // user turn
+                if (flagTurn == user.symbol  && isGameWon == false)  // user turn
                 {
                     updateScreen();
                     gameMenu();
-                    flagTurn = pc.getSymbol();
+                    flagTurn = pc.symbol;
                 }
 
             } while (isGameWon == false && currentlyPlaying == true); 
 
             updateScreen();
 
-            if (board.checkWinCondition(pc.getSymbol()) == true)
+            if (board.checkWinCondition(pc.symbol) == true)
             {
-                    pc.addPlayerWin();
-                    user.addPlayerLoss();
+                    pc.wins++;
+                    user.losses++;
                 } 
-            if(board.checkWinCondition(user.getSymbol()) == true)
+            if(board.checkWinCondition(user.symbol) == true)
                 {
-                    user.addPlayerWin();
-                    pc.addPlayerLoss();
+                    user.wins++;
+                    pc.losses++;
                 }
             else if(board.checkTieCondition() == true)
             {
-                pc.addTie();
-                user.addTie();  
+                pc.ties++;
+                user.ties++;  
             }
          
         }
@@ -180,7 +180,7 @@ namespace TicTacToe
         private static void ShutDown()
         {
             gameTimeStats.stopTime();
-            gameTimeStats.setGameWinLoss(user.getPlayerWins(), user.getPlayerLosses(), user.getTies());
+            gameTimeStats.setGameWinLoss(user.wins, user.losses, user.ties);
             if (currentlyPlaying == true)
             {
                 currentlyPlaying = checkIfPlayAgain();
