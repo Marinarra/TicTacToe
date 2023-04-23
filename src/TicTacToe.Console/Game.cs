@@ -180,7 +180,7 @@ namespace TicTacToe
         private static void ShutDown()
         {
             gameTimeStats.stopTime();
-            gameTimeStats.setGameWinLoss(user.getPlayerWins(), user.getPlayerLosses(), user.getTies());
+            gameTimeStats.setGameWinLoss(user.wins, user.losses, user.ties);
             if (currentlyPlaying == true)
             {
                 currentlyPlaying = checkIfPlayAgain();
