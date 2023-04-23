@@ -161,18 +161,18 @@ namespace TicTacToe
 
             if (board.checkWinCondition(pc.symbol) == true)
             {
-                    pc.addPlayerWin();
-                    user.addPlayerLoss();
+                    pc.wins++;
+                    user.losses++;
                 } 
             if(board.checkWinCondition(user.symbol) == true)
                 {
-                    user.addPlayerWin();
-                    pc.addPlayerLoss();
+                    user.wins++;
+                    pc.losses++;
                 }
             else if(board.checkTieCondition() == true)
             {
-                pc.addTie();
-                user.addTie();  
+                pc.ties++;
+                user.ties++;  
             }
          
         }
