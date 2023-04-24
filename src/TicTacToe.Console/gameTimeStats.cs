@@ -76,6 +76,12 @@ namespace TicTacToe
             return avgGameTime;
         }
 
+        /// <summary>
+        /// Assigns wins,losses, and ties
+        /// </summary>
+        /// <param name="wins"> Bit-32 Integer, Represents players number of wins across all games </param>
+        /// <param name="losses">Bit-32 Integer, Represents players number of losses accross all games</param>
+        /// <param name="userTies">Bit-32 Integer, Represents players number of ties accross all games</param>
         public static void setGameWinLoss(int wins,int losses, int userTies)
         {
             userWins = wins;
