@@ -19,6 +19,10 @@ namespace TicTacToe
         {
             timer.Start();
         }
+
+        /// <summary>
+        /// Adds 1 to gamesPlayed, sets gameTime to recorded time,adds this time to the totalGameTime,Then resets timer.
+        /// </summary>
         public static void stopTime()
         {
             gamesPlayed = gamesPlayed + 1;
