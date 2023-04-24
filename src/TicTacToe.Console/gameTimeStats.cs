@@ -1,8 +1,11 @@
 ﻿using System.Diagnostics;
 namespace TicTacToe
 {
+    /// <summary>
+    /// Records statistics and calculates the average and total time. Also stores total player/user wins and ties.
+    /// Used to display statistics in MainMenu
+    /// </summary>
       public static class gameTimeStats
-    
       {
         static Stopwatch timer = new Stopwatch();
         private static double gameTime = 0.00, avgGameTime = 0.00,totalGameTime = 0.00;
@@ -49,6 +52,5 @@ namespace TicTacToe
             ties = userTies;
         }
 
-        
      }
 }
