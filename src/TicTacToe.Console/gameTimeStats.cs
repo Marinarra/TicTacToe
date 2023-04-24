@@ -46,6 +46,11 @@ namespace TicTacToe
         {
             totalGameTime = totalGameTime + gameTime;
         }
+
+        /// <summary>
+        /// Gets total Game Time
+        /// </summary>
+        /// <returns>Double, represents Total time spent accross all games</returns>
         public static double getTotalGameTime()
         {
             return totalGameTime;
