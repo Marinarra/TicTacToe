@@ -10,7 +10,11 @@ namespace TicTacToe
         static Stopwatch timer = new Stopwatch();
         private static double gameTime = 0.00, avgGameTime = 0.00,totalGameTime = 0.00;
         private static int gamesPlayed = 0;
-        public static int userWins = 0, userLosses = 0, ties = 0;
+        public static int userWins = 0, userLosses = 0, ties = 0;]
+
+        /// <summary>
+        /// Starts timer from instance of Stopwatch
+        /// </summary>
         public static void startTimer()
         {
             timer.Start();
