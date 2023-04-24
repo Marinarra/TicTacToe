@@ -55,6 +55,11 @@ namespace TicTacToe
         {
             return totalGameTime;
         }
+
+        /// <summary>
+        /// Gets game time
+        /// </summary>
+        /// <returns>Double, represents time spent in most recent game</returns>
         public static double getGameTime()
         {
             return gameTime;
