@@ -38,7 +38,10 @@ namespace TicTacToe
         {
             gameTime = timer.Elapsed.TotalSeconds;
         }
-       
+
+        /// <summary>
+        /// Adds current timer value to totalGameTime
+        /// </summary>
         private static void setTotalGameTIme()
         {
             totalGameTime = totalGameTime + gameTime;
