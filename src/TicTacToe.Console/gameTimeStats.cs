@@ -64,6 +64,12 @@ namespace TicTacToe
         {
             return gameTime;
         }
+
+        /// <summary>
+        /// Calculates and returns average time spent across all games.
+        /// Divides the total game time by the number of games played.
+        /// </summary>
+        /// <returns>Double, represents the average time spent in game, across all games </returns>
         public static double getAvgGameTime()
         {
             avgGameTime = ((totalGameTime) / gamesPlayed);
