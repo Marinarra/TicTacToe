@@ -84,6 +84,10 @@ namespace TicTacToe
             WriteLine("    \t\t\t\t------------ ");
             WriteLine("    \t\t\t\t {0} | {1} | {2} ", board[6], board[7], board[8]);
         }
+
+        /// <summary>
+        /// Used to reset board array back to its default initialization with initBoard
+        /// </summary>
         public void resetBoard()
         {
             initBoard();
