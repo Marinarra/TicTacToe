@@ -4,6 +4,10 @@ using System;
 using static System.Console;
 namespace TicTacToe
 {
+    /// <summary>
+    /// Provides user with console output and prompts user input in order to simulate  a tic-tac-toe game.
+    /// Has a start,run, and shut down cycle, allows user to play games with the users-chosen symbol until the user chooses otherwise.
+    /// </summary>
     public static class Game
     {
         //Declaring Instances//
@@ -13,6 +17,10 @@ namespace TicTacToe
         static char flagTurn = ' ',replay;
         static bool currentlyPlaying,reusableBool;
 
+        /// <summary>
+        /// Provides user with menu/information while playing the game. 
+        /// Outputs to console,Displays title, tic tac toe board, displays the users selected symbol and the systems symbol, Then displays a bottom border.
+        /// </summary>
         private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
@@ -22,6 +30,10 @@ namespace TicTacToe
             WriteLine("\n(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
         }
 
+        /// <summary>
+        /// Used to determine through user input if the user would like to make the first move.
+        /// Also only accepts the key N or Y as input (representing Yes or No)
+        /// </summary>
         private static void checkIfUserFirst()
         {
             bool correctSymbol = false;
@@ -49,6 +61,10 @@ namespace TicTacToe
             } while (correctSymbol == false);
         }
 
+        /// <summary>
+        /// Used to determine whether user will play as 'X' or 'O' via user input.
+        /// Only accepts X or O keys as user input (representing X and O)
+        /// </summary>
         private static void userChooseSymbol()  //Gets users symbol X or O
         {
             do
@@ -77,6 +93,11 @@ namespace TicTacToe
             } while (reusableBool); //Repeat until X or O pressed
         }
 
+        /// <summary>
+        /// Used to set up the tic tac toe game, 
+        /// board is reset and then displayed for user. If the game is not consecuative with another - then the users symbol is determined and assigned.
+        /// In any case the user is asked if they would like to go first.
+        /// </summary>
         private static void startUpCycle() //start up cycle
         {
             board.resetBoard();
@@ -90,6 +111,11 @@ namespace TicTacToe
             }
             checkIfUserFirst();
         }
+
+        /// <summary>
+        /// Used to display options to prompt the user to take a turn during the game. Takes user input via either number keys 1-9 or numpad 1-9 or 0 for exiting.
+        /// Will only accept a coordinate that is displayed as open on the console.
+        /// </summary>
         private static void gameMenu() //game menu
         {
 
@@ -119,7 +145,14 @@ namespace TicTacToe
                 }
             } while (correctOption == false && currentlyPlaying == true);
         }
-        
+
+
+        /// <summary>
+        /// Converts the value from the unicode value of the key to the corresponding integer.
+        /// </summary>
+        /// <param name="value"> Represents the unicode value of the key pressed by the user</param>
+        /// <returns> A bit-32 integer, converted from unicode to its intended value.
+        /// (keyboard numbers 0 to 9 = 48 to 57) (numpad numbers 0 to 9 = 96 to 105) </returns>
         private static int convertAscii(int value)
         {
             if(value <= 57 && value >= 48)
@@ -132,6 +165,10 @@ namespace TicTacToe
             return value;
         }
 
+        /// <summary>
+        /// Used while the game is in progress, Checks for win conditions and flags for when it is the users/systems turn to choose a coordinate.
+        /// When an end condition is met, the board displayed is updated one last time and the statistics are added to the appropriate variables
+        /// </summary>
         private static void RunCycle()
         {
             gameTimeStats.startTimer();
@@ -177,6 +214,10 @@ namespace TicTacToe
          
         }
 
+        /// <summary>
+        /// Used when the end condition is met in the game. Stops the timer and then stores the data in gameTimeStats. 
+        /// Uses the checkIfPlay again to see if the user wants to play another round of Tic-Tac-Toe.
+        /// </summary>
         private static void ShutDown()
         {
             gameTimeStats.stopTime();
@@ -188,7 +229,11 @@ namespace TicTacToe
 
         }
         
-
+        /// <summary>
+        /// Used to determine whether the user would like to play another round of Tic-Tac-Toe. 
+        /// Prompts user to if they would like to play again and to decide yes or no, only accepts Y or N key (representing Yes or No)
+        /// </summary>
+        /// <returns>Bool, representing whether the user wants to keep playing (true for yes, false for no) </returns>
         private static bool checkIfPlayAgain()
         {
             
@@ -220,7 +265,10 @@ namespace TicTacToe
 
         }
 
-
+        /// <summary>
+        /// Used to initialize game and run all cycles of the game: Start Up,Run and Shut Down.
+        /// Loops the cycles as rounds of Tic-Tac-Toe for as long as the user wishes to play rounds of Tic-Tac-Toe.
+        /// </summary>
         public static void startGame()
         {
             currentlyPlaying = true;
