@@ -23,6 +23,9 @@ namespace TicTacToe
             initBoard();
         }
 
+        /// <summary>
+        /// Used to assign board with character values 1-9.
+        /// </summary>
         private void initBoard()
         {
             for (int i = 0; i < 9; i++)
