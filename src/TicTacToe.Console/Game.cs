@@ -61,6 +61,10 @@ namespace TicTacToe
             } while (correctSymbol == false);
         }
 
+        /// <summary>
+        /// Used to determine whether user will play as 'X' or 'O' via user input.
+        /// Only accepts X or O keys as user input (representing X and O)
+        /// </summary>
         private static void userChooseSymbol()  //Gets users symbol X or O
         {
             do
