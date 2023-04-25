@@ -72,6 +72,9 @@ namespace TicTacToe
             board[coordinate] = flag;
         }
 
+        /// <summary>
+        /// Used to display current values of board array in a Tic-Tac-Toe board layout to console
+        /// </summary>
         public void printBoard()
         {
 
