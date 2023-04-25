@@ -214,6 +214,10 @@ namespace TicTacToe
          
         }
 
+        /// <summary>
+        /// Used when the end condition is met in the game. Stops the timer and then stores the data in gameTimeStats. 
+        /// Uses the checkIfPlay again to see if the user wants to play another round of Tic-Tac-Toe.
+        /// </summary>
         private static void ShutDown()
         {
             gameTimeStats.stopTime();
