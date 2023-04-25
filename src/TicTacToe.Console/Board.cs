@@ -159,6 +159,10 @@ namespace TicTacToe
 
         }
 
+        /// <summary>
+        /// Used to check if the board arrays current values constitute a tie condition in Tic-Tac-Toe (if all cells are filled with 'X' or 'O').
+        /// </summary>
+        /// <returns>Boolean, represents whether or not the tie condition has been met (true = tie, false = no-tie)</returns>
         public bool checkTieCondition()
         {
             bool isTied = false;
