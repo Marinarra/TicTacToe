@@ -2,6 +2,13 @@
 using static System.Console;
 namespace TicTacToe
 {
+    /// <summary>
+    /// Used to store functions and variables of an array board, represents a Tic-Tac-Toe board.
+    /// Contains Functions for initializing char array board to be empty and show on the console as the array value + 1 (so it shows 1-9 instead of 0-8 for the user)
+    /// Also contains functions to randomly generate a number within the array that is not used yet - for use to place the systems symbol at random per each turn.
+    /// Contains Function to display current board array in Tic-Tac-Toe format.
+    /// Lastly contains functions for checking for end conditions Win/Tie.
+    /// </summary>
     public class Board
     {
         private Random rng = new Random();
