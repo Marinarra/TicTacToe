@@ -4,6 +4,10 @@ using System;
 using static System.Console;
 namespace TicTacToe
 {
+    /// <summary>
+    /// Provides user with console output and prompts user input in order to simulate  a tic-tac-toe game.
+    /// Has a start,run, and shut down cycle, allows user to play games with the users-chosen symbol until the user chooses otherwise.
+    /// </summary>
     public static class Game
     {
         //Declaring Instances//
