@@ -14,6 +14,10 @@ namespace TicTacToe
         private Random rng = new Random();
         private char[] board = new char[9];
         private bool checkValue;
+
+        /// <summary>
+        /// Constructs Board class, uses initBoard function to initialize board with character values.
+        /// </summary>
         public Board()
         {
             initBoard();
