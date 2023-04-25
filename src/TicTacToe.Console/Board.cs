@@ -33,6 +33,13 @@ namespace TicTacToe
                 board[i] = Convert.ToChar(Convert.ToString(i + 1));
             }
         }
+
+        /// <summary>
+        /// Used to determine if the coordinate given has already been taken. If the coordinate is free then the flag is assigned to the corresponding array index.
+        /// </summary>
+        /// <param name="coordinate">bit-32 integer, represents the coordinate to be verified</param>
+        /// <param name="flag">character, represents the symbol to be placed ('X' or 'O')</param>
+        /// <returns>Bool, represents whether or not the coordinated passed is valid (true = coordinate is valid, false = coordinate is already used)</returns>
         public bool checkIfCellAvailable(int coordinate, char flag)
 
         {
