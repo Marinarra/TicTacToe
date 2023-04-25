@@ -17,6 +17,10 @@ namespace TicTacToe
         static char flagTurn = ' ',replay;
         static bool currentlyPlaying,reusableBool;
 
+        /// <summary>
+        /// Provides user with menu/information while playing the game. 
+        /// Outputs to console,Displays title, tic tac toe board, displays the users selected symbol and the systems symbol, Then displays a bottom border.
+        /// </summary>
         private static void updateScreen() //Updates game screen 
         {
             Console.Clear();
