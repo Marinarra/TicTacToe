@@ -30,6 +30,10 @@ namespace TicTacToe
             WriteLine("\n(¯`·._.·(¯`·._.·(¯`·._.·(¯`·._.· Tic Tac Toe ·._.·´¯)·._.·´¯)·._.·´¯)·._.·´¯)");
         }
 
+        /// <summary>
+        /// Used to determine through user input if the user would like to make the first move.
+        /// Also only accepts the key N or Y as input (representing Yes or No)
+        /// </summary>
         private static void checkIfUserFirst()
         {
             bool correctSymbol = false;
