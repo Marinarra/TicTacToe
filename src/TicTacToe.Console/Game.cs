@@ -93,6 +93,11 @@ namespace TicTacToe
             } while (reusableBool); //Repeat until X or O pressed
         }
 
+        /// <summary>
+        /// Used to set up the tic tac toe game, 
+        /// board is reset and then displayed for user. If the game is not consecuative with another - then the users symbol is determined and assigned.
+        /// In any case the user is asked if they would like to go first.
+        /// </summary>
         private static void startUpCycle() //start up cycle
         {
             board.resetBoard();
