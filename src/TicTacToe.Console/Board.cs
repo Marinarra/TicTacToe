@@ -136,6 +136,13 @@ namespace TicTacToe
             }
             return checkValue;
         }
+
+        /// <summary>
+        /// Used to check if the values of the board array constitute a diagnol win in Tic-Tac-Toe.
+        /// Array values are checked against flag value. A bool is returned true if there is a win detected.        
+        /// </summary>
+        /// <param name="flag">Char, represents symbol in Tic-Tac-Toe ('X' or 'O')</param>
+        /// <returns>Boolean, represents whether or not the win condition has been met (true = win, false = no-win)</returns>
         private bool checkWinDiagnol(char flag)
         {
             checkValue = false;
