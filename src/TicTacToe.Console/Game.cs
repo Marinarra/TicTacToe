@@ -111,6 +111,11 @@ namespace TicTacToe
             }
             checkIfUserFirst();
         }
+
+        /// <summary>
+        /// Used to display options to prompt the user to take a turn during the game. Takes user input via either number keys 1-9 or numpad 1-9 or 0 for exiting.
+        /// Will only accept a coordinate that is displayed as open on the console.
+        /// </summary>
         private static void gameMenu() //game menu
         {
 
