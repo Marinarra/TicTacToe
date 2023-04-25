@@ -57,6 +57,11 @@ namespace TicTacToe
             return result;
         }
 
+        /// <summary>
+        /// Used to determine randomly generated(rng) number within the range of board index.
+        /// Places the flags symbol in the rng index of board
+        /// </summary>
+        /// <param name="flag"> Char,Represents the systems symbol ('X' or 'O')</param>
         public void systemChoose(char flag)
         {
             int coordinate = rng.Next(8);
