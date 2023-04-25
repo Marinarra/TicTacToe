@@ -229,7 +229,11 @@ namespace TicTacToe
 
         }
         
-
+        /// <summary>
+        /// Used to determine whether the user would like to play another round of Tic-Tac-Toe. 
+        /// Prompts user to if they would like to play again and to decide yes or no, only accepts Y or N key (representing Yes or No)
+        /// </summary>
+        /// <returns>Bool, representing whether the user wants to keep playing (true for yes, false for no) </returns>
         private static bool checkIfPlayAgain()
         {
             
