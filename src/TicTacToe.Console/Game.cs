@@ -265,7 +265,10 @@ namespace TicTacToe
 
         }
 
-
+        /// <summary>
+        /// Used to initialize game and run all cycles of the game: Start Up,Run and Shut Down.
+        /// Loops the cycles as rounds of Tic-Tac-Toe for as long as the user wishes to play rounds of Tic-Tac-Toe.
+        /// </summary>
         public static void startGame()
         {
             currentlyPlaying = true;
