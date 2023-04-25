@@ -165,6 +165,10 @@ namespace TicTacToe
             return value;
         }
 
+        /// <summary>
+        /// Used while the game is in progress, Checks for win conditions and flags for when it is the users/systems turn to choose a coordinate.
+        /// When an end condition is met, the board displayed is updated one last time and the statistics are added to the appropriate variables
+        /// </summary>
         private static void RunCycle()
         {
             gameTimeStats.startTimer();
