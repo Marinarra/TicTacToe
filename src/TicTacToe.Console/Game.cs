@@ -170,11 +170,15 @@ namespace TicTacToe
         /// (keyboard numbers 0 to 9 = 48 to 57) (numpad numbers 0 to 9 = 96 to 105) </returns>
         private static int convertAscii(int value)
         {
-            if(value <= 57 && value >= 48)
+            //  Checks if value is in range 48 to 57 and then range 96 to 105
+            //  If value is in first range, 48 is subtracted from value
+            if (value <= 57 && value >= 48)         // If numbers on top of keyboard used. 48 = 0
             {
                 value -= 48;
-            } 
-            else if(value >= 96 && value <= 105){
+            }
+            //  If value is in second range, 96 is subtracted from value
+            else if (value >= 96 && value <= 105)   // If numbers on numpad are used 96 = 0
+            {
                 value -= 96;
             }
             return value;
