@@ -68,6 +68,7 @@ namespace TicTacToe
         public void systemChoose(char flag)
         {
             int coordinate = rng.Next(8);
+            //  Assigns randomly generated number to coordinate while the coordinate contains 'X' or 'O'
             while (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 coordinate = rng.Next(9);
