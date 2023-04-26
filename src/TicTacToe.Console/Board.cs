@@ -183,14 +183,16 @@ namespace TicTacToe
             int count = 0;
             for (int i = 0; i < board.Length; i++)
             {
-
+                //  Checks if board index i contains 'X' OR 'O', if it contains one then count + 1
                 if (board[i] == 'X' || board[i] == 'O')
                 {
                     count++;
                 }
             }
+            //  Checks if count equals 9 then win conditions are checked
             if (count == 9)
             {
+                //  if there is no win condition that is true for either 'X' or 'O' then isTied = true
                 if (checkWinCondition('X') == false && checkWinCondition('O') == false)
                 {
                     isTied = true;
