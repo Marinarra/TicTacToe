@@ -132,7 +132,7 @@ namespace TicTacToe
 
             bool correctOption = false;
             int keyEntered;
-
+            //  Loops for users input on which coordinate they choose or exiting the game
             do
             {
                 WriteLine("-----------------------------------");
@@ -154,6 +154,7 @@ namespace TicTacToe
                 {
                     correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
                 }
+                //  Continues while the correctOption is false and currentlyPlaying is true
             } while (correctOption == false && currentlyPlaying == true);
         }
 
