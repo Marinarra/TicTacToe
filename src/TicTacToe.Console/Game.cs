@@ -192,6 +192,7 @@ namespace TicTacToe
         {
             gameTimeStats.startTimer();
             bool isGameWon = false; //  Game won/tied = true, game not won/tied = false
+            //  Used to loop game turns until match is tied or won
             do
             {
                 isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
@@ -210,7 +211,7 @@ namespace TicTacToe
                     gameMenu();
                     flagTurn = pc.symbol;
                 }
-
+            //  Loops while isGameWon is false and currentlyPlaying is true (isGameWon is also including if theres a tie)
             } while (isGameWon == false && currentlyPlaying == true); 
 
             updateScreen();
