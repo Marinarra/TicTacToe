@@ -119,6 +119,8 @@ namespace TicTacToe
             WriteLine("Press anything except Y to go back");
             WriteLine("Press Y to close application\n");
             ConsoleKeyInfo keyRead = Console.ReadKey();
+            //  Checks if console key Y is pressed
+            //  Assigns value true to bool check when true
             if(keyRead.Key == ConsoleKey.Y)
             {
                 check = true;
