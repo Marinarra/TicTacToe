@@ -42,19 +42,22 @@ namespace TicTacToe
             {
                 WriteLine("Would you like to go first? (Y/N) ");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
-
+                //  Used to check if user would like to go first and if input is valid
+                //  Checks if key pressed is Y, if so flagTurn is assigned to users symbol and correctSymbol = true
                 if (keyRead.Key == ConsoleKey.Y)
                 {
                     WriteLine("\n User Goes First!");
                     flagTurn = user.symbol;
                     correctSymbol = true;
                 }
+                //  Checks if key pressed is N, if so flagTurn is assigned to pcs symbol and correctSymbol = true
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     WriteLine("\n System Goes First!");
                     flagTurn = pc.symbol;
                     correctSymbol = true;
                 }
+                //  If any other key pressed, user is told to try again and correctSymbol remains false
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
