@@ -272,15 +272,19 @@ namespace TicTacToe
             //  Used to iterate until user selects valid input on whether to play again or not
             do
             {
+                //  Used to check if user would like to play again and validate the answer
+                //  Checks if the key pressed is the Y key, if so reusable bool is set to true and replay is set to 'Y' 
                 if (keyRead.Key == ConsoleKey.Y)
                 {
                     reusableBool = true;
                     replay = 'y';
                 }
+                //  Checks if the key pressed is the N key, if so reusable bool is set to false and replay remains 'n' 
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     reusableBool = false;
                 }
+                //  Any other key pressed is not valid, user is prompted to try again, and input valid is set to false
                 else
                 {
                     WriteLine("Choice unavailable, please try again Y/N \n");
@@ -291,7 +295,6 @@ namespace TicTacToe
             } while (!(inputValid));
 
             return reusableBool;
-
         }
 
         /// <summary>
