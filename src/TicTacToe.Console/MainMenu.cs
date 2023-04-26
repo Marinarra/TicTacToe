@@ -169,6 +169,7 @@ namespace TicTacToe
 
 
             WriteLine("***************************************************************************************************");
+            //  Prints out each item to console with values from options array, each iteration the next index of options is printed alongside number of the iteration + 1
             for (int i = 0; i < 3; i++)
                 {
                     WriteLine("\t  -||============-+-> \n" +
