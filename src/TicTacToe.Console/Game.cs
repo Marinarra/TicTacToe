@@ -72,6 +72,7 @@ namespace TicTacToe
         /// </summary>
         private static void userChooseSymbol()  //Gets users symbol X or O
         {
+            //  Loops input for whether user would like to play as 'X' or 'O' and validates input
             do
             {
                 WriteLine("Would you like to play as 'X' or 'O'' ?");
@@ -99,6 +100,7 @@ namespace TicTacToe
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
+                //  Loops while reusableBool is true
             } while (reusableBool); //Repeat until X or O pressed
         }
 
