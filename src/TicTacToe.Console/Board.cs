@@ -210,6 +210,7 @@ namespace TicTacToe
         public bool checkWinCondition(char flag)
         {
             checkValue = false;
+            //  Checks if any win condition returns true, if any one condition is true then checkValue is assigned true
             if (checkWinVertical(flag) || checkWinHorizontal(flag) || checkWinDiagnol(flag))
             { checkValue = true; }
             return checkValue;
