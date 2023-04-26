@@ -196,6 +196,8 @@ namespace TicTacToe
             do
             {
                 isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
+                //  Used to determin whether it is the systems or users turn and whether the game has ended before the next turn.
+                //  Checks if the flagTurn is for the pc's symbol and if the game hasn't been won, if so the system chooses a coordinate, gives the flag to the user and then updates the screen with their move
                 if (flagTurn == pc.symbol && isGameWon == false)  // system turn
                 {
                     board.systemChoose(flagTurn);
@@ -204,7 +206,7 @@ namespace TicTacToe
                 }
 
                 isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
-
+                //  Checks if the flagTurn is for the users symbol and if the game hasn't been won, if so the scren is updated, the user is given a coordinate selection screen and then the flag is given to the system 
                 if (flagTurn == user.symbol  && isGameWon == false)  // user turn
                 {
                     updateScreen();
@@ -215,17 +217,20 @@ namespace TicTacToe
             } while (isGameWon == false && currentlyPlaying == true); 
 
             updateScreen();
-
+            //  Used to check if the user or pc won, or if there was a tie
+            //  Checks if the pc won the match, if so the pc gains a win and the user is given a loss 
             if (board.checkWinCondition(pc.symbol) == true)
             {
                     pc.wins++;
                     user.losses++;
-                } 
-            if(board.checkWinCondition(user.symbol) == true)
+                }
+            //  Checks if the user won the match, if so the user gains a win and the pc is given a loss 
+            if (board.checkWinCondition(user.symbol) == true)
                 {
                     user.wins++;
                     pc.losses++;
                 }
+            //  Checks if there was a tie, if so both pc and user are given a tie
             else if(board.checkTieCondition() == true)
             {
                 pc.ties++;
