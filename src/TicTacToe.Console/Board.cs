@@ -181,6 +181,7 @@ namespace TicTacToe
         {
             bool isTied = false;
             int count = 0;
+            //  Has 9 iterations to check each index of the board
             for (int i = 0; i < board.Length; i++)
             {
                 //  Checks if board index i contains 'X' OR 'O', if it contains one then count + 1
