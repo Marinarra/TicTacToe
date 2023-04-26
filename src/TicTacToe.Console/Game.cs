@@ -37,27 +37,32 @@ namespace TicTacToe
         private static void checkIfUserFirst()
         {
             bool correctSymbol = false;
+            //  Loops to see if the user would like to go first and validates the input
             do
             {
                 WriteLine("Would you like to go first? (Y/N) ");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
-
+                //  Used to check if user would like to go first and if input is valid
+                //  Checks if key pressed is Y, if so flagTurn is assigned to users symbol and correctSymbol = true
                 if (keyRead.Key == ConsoleKey.Y)
                 {
                     WriteLine("\n User Goes First!");
                     flagTurn = user.symbol;
                     correctSymbol = true;
                 }
+                //  Checks if key pressed is N, if so flagTurn is assigned to pcs symbol and correctSymbol = true
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     WriteLine("\n System Goes First!");
                     flagTurn = pc.symbol;
                     correctSymbol = true;
                 }
+                //  If any other key pressed, user is told to try again and correctSymbol remains false
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
+             // Loops while the correctSymbol = false, while any key thats not N or Y is pressed
             } while (correctSymbol == false);
         }
 
@@ -67,11 +72,14 @@ namespace TicTacToe
         /// </summary>
         private static void userChooseSymbol()  //Gets users symbol X or O
         {
+            //  Loops input for whether user would like to play as 'X' or 'O' and validates input
             do
             {
                 WriteLine("Would you like to play as 'X' or 'O'' ?");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
                 reusableBool = true;
+                //  Used to determine if user would like to play as 'O' or 'X' and if user chose valid symbol
+                //  Checks if key pressed is O key, if so user symbol is set to 'O'  and pc symbol to 'X'. reusableBool is also set to false
                 if (keyRead.Key == ConsoleKey.O) //User chooses O
                 {
                     WriteLine("\nUser has chosen 'O'"); 
@@ -79,6 +87,7 @@ namespace TicTacToe
                     pc.symbol = ('X');
                     reusableBool = false;
                 }
+                //  Checks if key pressed is X key, if so user symbol is set to 'X'  and pc symbol to 'O'. reusableBool is also set to false
                 else if (keyRead.Key == ConsoleKey.X)   //User chooses X
                 {
                     WriteLine("\nUser has chosen 'X'");
@@ -86,10 +95,12 @@ namespace TicTacToe
                     pc.symbol = ('O');
                     reusableBool = false;
                 }
+                //  If any other key pressed, user is told to try again and reusableBool remains true
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
+                //  Loops while reusableBool is true
             } while (reusableBool); //Repeat until X or O pressed
         }
 
@@ -121,7 +132,7 @@ namespace TicTacToe
 
             bool correctOption = false;
             int keyEntered;
-
+            //  Loops for users input on which coordinate they choose or exiting the game
             do
             {
                 WriteLine("-----------------------------------");
@@ -134,15 +145,19 @@ namespace TicTacToe
                 ConsoleKeyInfo keyRead = Console.ReadKey(); 
 
                 keyEntered = convertAscii(Convert.ToInt32(keyRead.Key));
+                //  Used to check if user wishes to exit or if their number is a valid coordinate to choose
+                //  Checks if keyEntered equals 0, if so then currentlyPlaying is set to false and correctOption is set to true - Exits game
                 if (keyEntered == 0)
                 {
                     currentlyPlaying = false;
                     correctOption = true;
                 }
+                //  Checks if keyEntered is greater than 0, if so correctOption is set to return value of function to check if the move was valid
                 else if (keyEntered > 0)
                 {
                     correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
                 }
+                //  Continues while the correctOption is false and currentlyPlaying is true
             } while (correctOption == false && currentlyPlaying == true);
         }
 
@@ -155,11 +170,15 @@ namespace TicTacToe
         /// (keyboard numbers 0 to 9 = 48 to 57) (numpad numbers 0 to 9 = 96 to 105) </returns>
         private static int convertAscii(int value)
         {
-            if(value <= 57 && value >= 48)
+            //  Checks if value is in range 48 to 57 and then range 96 to 105
+            //  If value is in first range, 48 is subtracted from value
+            if (value <= 57 && value >= 48)         // If numbers on top of keyboard used. 48 = 0
             {
                 value -= 48;
-            } 
-            else if(value >= 96 && value <= 105){
+            }
+            //  If value is in second range, 96 is subtracted from value
+            else if (value >= 96 && value <= 105)   // If numbers on numpad are used 96 = 0
+            {
                 value -= 96;
             }
             return value;
@@ -173,9 +192,12 @@ namespace TicTacToe
         {
             gameTimeStats.startTimer();
             bool isGameWon = false; //  Game won/tied = true, game not won/tied = false
+            //  Used to loop game turns until match is tied or won
             do
             {
                 isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
+                //  Used to determin whether it is the systems or users turn and whether the game has ended before the next turn.
+                //  Checks if the flagTurn is for the pc's symbol and if the game hasn't been won, if so the system chooses a coordinate, gives the flag to the user and then updates the screen with their move
                 if (flagTurn == pc.symbol && isGameWon == false)  // system turn
                 {
                     board.systemChoose(flagTurn);
@@ -184,28 +206,31 @@ namespace TicTacToe
                 }
 
                 isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
-
+                //  Checks if the flagTurn is for the users symbol and if the game hasn't been won, if so the scren is updated, the user is given a coordinate selection screen and then the flag is given to the system 
                 if (flagTurn == user.symbol  && isGameWon == false)  // user turn
                 {
                     updateScreen();
                     gameMenu();
                     flagTurn = pc.symbol;
                 }
-
+            //  Loops while isGameWon is false and currentlyPlaying is true (isGameWon is also including if theres a tie)
             } while (isGameWon == false && currentlyPlaying == true); 
 
             updateScreen();
-
+            //  Used to check if the user or pc won, or if there was a tie
+            //  Checks if the pc won the match, if so the pc gains a win and the user is given a loss 
             if (board.checkWinCondition(pc.symbol) == true)
             {
                     pc.wins++;
                     user.losses++;
-                } 
-            if(board.checkWinCondition(user.symbol) == true)
+                }
+            //  Checks if the user won the match, if so the user gains a win and the pc is given a loss 
+            if (board.checkWinCondition(user.symbol) == true)
                 {
                     user.wins++;
                     pc.losses++;
                 }
+            //  Checks if there was a tie, if so both pc and user are given a tie
             else if(board.checkTieCondition() == true)
             {
                 pc.ties++;
@@ -222,6 +247,8 @@ namespace TicTacToe
         {
             gameTimeStats.stopTime();
             gameTimeStats.setGameWinLoss(user.wins, user.losses, user.ties);
+            //  Used to check if the game is not already quit
+            //  Checks if currentlyPlaying is true, if so currentlyPlaying is assigned return value of checkIfPlayAgain
             if (currentlyPlaying == true)
             {
                 currentlyPlaying = checkIfPlayAgain();
@@ -242,27 +269,32 @@ namespace TicTacToe
             WriteLine("-----------------------------------\n");
             ConsoleKeyInfo keyRead = Console.ReadKey();
             bool inputValid = true;
+            //  Used to iterate until user selects valid input on whether to play again or not
             do
             {
+                //  Used to check if user would like to play again and validate the answer
+                //  Checks if the key pressed is the Y key, if so reusable bool is set to true and replay is set to 'Y' 
                 if (keyRead.Key == ConsoleKey.Y)
                 {
                     reusableBool = true;
                     replay = 'y';
                 }
+                //  Checks if the key pressed is the N key, if so reusable bool is set to false and replay remains 'n' 
                 else if (keyRead.Key == ConsoleKey.N)
                 {
                     reusableBool = false;
                 }
+                //  Any other key pressed is not valid, user is prompted to try again, and input valid is set to false
                 else
                 {
                     WriteLine("Choice unavailable, please try again Y/N \n");
                     keyRead = Console.ReadKey();
                     inputValid = false;
                 }
+            //  Loops while inputValid is false, input is not valid
             } while (!(inputValid));
 
             return reusableBool;
-
         }
 
         /// <summary>
@@ -273,15 +305,16 @@ namespace TicTacToe
         {
             currentlyPlaying = true;
             replay = 'n';
+            //  Used to iterate through the game cycles for each match
             do
             {
                 
                 startUpCycle(); //User selects to go first or not & user selects symbol
                 RunCycle();     // User Coordinate input & RNG System choice
                 ShutDown();     //Display Statistics of game and game time played and the average time
+            //  Loops while currentlyPlaying is true, user selects to replay game
             } while ( currentlyPlaying == true);
             
-
         }
 
     }
