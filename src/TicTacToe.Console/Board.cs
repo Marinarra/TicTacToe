@@ -109,7 +109,7 @@ namespace TicTacToe
             //  Has 3 iterations to check each row of the board
             for (int i = 0; i < 3; i++)
             {
-                //  Checks if flag is the value of boards [1],[2],[3] then [4],[5],[6] then [7], [8],[9]
+                //  Checks if flag is the value of boards [0],[1],[2] then [3],[4],[5] then [6], [7],[8]
                 if (board[i] == flag && board[i] == flag && board[i + 2] == flag)  // each row
                 {
                     //  Checks if the checkValue is still false
