@@ -305,15 +305,16 @@ namespace TicTacToe
         {
             currentlyPlaying = true;
             replay = 'n';
+            //  Used to iterate through the game cycles for each match
             do
             {
                 
                 startUpCycle(); //User selects to go first or not & user selects symbol
                 RunCycle();     // User Coordinate input & RNG System choice
                 ShutDown();     //Display Statistics of game and game time played and the average time
+            //  Loops while currentlyPlaying is true, user selects to replay game
             } while ( currentlyPlaying == true);
             
-
         }
 
     }
