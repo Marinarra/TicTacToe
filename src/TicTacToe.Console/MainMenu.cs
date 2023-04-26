@@ -17,6 +17,7 @@ namespace TicTacToe
         static void Main(string[] args)
         {
             int option;
+            // Infinite loop to display main menu
             while (true)
             {
                 Console.Clear();
