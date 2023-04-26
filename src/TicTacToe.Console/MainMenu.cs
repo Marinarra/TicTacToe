@@ -24,7 +24,7 @@ namespace TicTacToe
                 printMenuText();
                 ConsoleKeyInfo keyRead = Console.ReadKey();
 
-                option = convertAscii(Convert.ToInt32(keyRead.Key));
+                option = Game.convertAscii(Convert.ToInt32(keyRead.Key));
 
                 //  Determines option user chooses via input 1-3
                 switch (option)
