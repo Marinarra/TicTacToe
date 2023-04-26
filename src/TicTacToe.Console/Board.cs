@@ -45,11 +45,13 @@ namespace TicTacToe
 
         {
             bool result = false;
-
+            //  Checks to see if board coordinate is taken or available
+            //  If coordinate is taken, console notifies user, and result remains false
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("\nSpace Taken!");
             }
+            // If coordinate is available, board coordinate is assigned with flag char and result is changed to true
             else if (coordinate <= 8 || coordinate >= 0)
             {
                 board[coordinate] = flag;
