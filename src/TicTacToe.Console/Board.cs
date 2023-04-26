@@ -137,7 +137,7 @@ namespace TicTacToe
             {
                 //  Checks if flag is the value of boards [0],[3],[6] then [1],[4],[7] then [2],[5],[8]
                 if (board[i] == flag && board[i + 3] == flag && board[i + 6] == flag) // each collumn 
-                {   
+                {
                     //  Checks if the checkValue is still false
                     //  If checkValue is false then true is assigned
                     if (checkValue == false)
@@ -219,6 +219,6 @@ namespace TicTacToe
     }
 }
 
-    
+
 
 
