@@ -28,6 +28,7 @@ namespace TicTacToe
         /// </summary>
         private void initBoard()
         {
+            //  Assigns i value + 1 as a character to i of board array
             for (int i = 0; i < 9; i++)
             {
                 board[i] = Convert.ToChar(Convert.ToString(i + 1));
@@ -44,11 +45,13 @@ namespace TicTacToe
 
         {
             bool result = false;
-
+            //  Checks to see if board coordinate is taken or available
+            //  If coordinate is taken, console notifies user, and result remains false
             if (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 WriteLine("\nSpace Taken!");
             }
+            // If coordinate is available, board coordinate is assigned with flag char and result is changed to true
             else if (coordinate <= 8 || coordinate >= 0)
             {
                 board[coordinate] = flag;
@@ -65,6 +68,7 @@ namespace TicTacToe
         public void systemChoose(char flag)
         {
             int coordinate = rng.Next(8);
+            //  Assigns randomly generated number to coordinate while the coordinate contains 'X' or 'O'
             while (board[coordinate] == 'X' || board[coordinate] == 'O')
             {
                 coordinate = rng.Next(9);
@@ -102,10 +106,14 @@ namespace TicTacToe
         private bool checkWinHorizontal(char flag)
         {
             checkValue = false;
+            //  Has 3 iterations to check each row of the board
             for (int i = 0; i < 3; i++)
             {
-                if (board[i] == flag && board[i + 1] == flag && board[i + 2] == flag)  // each row
+                //  Checks if flag is the value of boards [0],[1],[2] then [3],[4],[5] then [6], [7],[8]
+                if (board[i] == flag && board[i] == flag && board[i + 2] == flag)  // each row
                 {
+                    //  Checks if the checkValue is still false
+                    //  If checkValue is false then true is assigned
                     if (checkValue == false)
                     {
                         checkValue = true;
@@ -124,10 +132,14 @@ namespace TicTacToe
         private bool checkWinVertical(char flag)
         {
             checkValue = false;
+            //  Has 3 iterations to check each collumn of the board 
             for (int i = 0; i < 3; i++)
             {
+                //  Checks if flag is the value of boards [0],[3],[6] then [1],[4],[7] then [2],[5],[8]
                 if (board[i] == flag && board[i + 3] == flag && board[i + 6] == flag) // each collumn 
                 {
+                    //  Checks if the checkValue is still false
+                    //  If checkValue is false then true is assigned
                     if (checkValue == false)
                     {
                         checkValue = true;
@@ -147,10 +159,12 @@ namespace TicTacToe
         {
             checkValue = false;
 
+            //  Checks if board[0],board[4],board[8] all contain flag, if true sets checkValue to true
             if (board[0] == flag && board[4] == flag && board[8] == flag) // top left to bottom right is filled
             {
                 checkValue = true;
             }
+            //  Checks if board[2],board[4],board[6] all contain flag, if true sets checkValue to true
             if (board[2] == flag && board[4] == flag && board[6] == flag) // top right to bottom left is filled
             {
                 checkValue = true;
@@ -167,16 +181,19 @@ namespace TicTacToe
         {
             bool isTied = false;
             int count = 0;
+            //  Has 9 iterations to check each index of the board
             for (int i = 0; i < board.Length; i++)
             {
-
+                //  Checks if board index i contains 'X' OR 'O', if it contains one then count + 1
                 if (board[i] == 'X' || board[i] == 'O')
                 {
                     count++;
                 }
             }
+            //  Checks if count equals 9 then win conditions are checked
             if (count == 9)
             {
+                //  if there is no win condition that is true for either 'X' or 'O' then isTied = true
                 if (checkWinCondition('X') == false && checkWinCondition('O') == false)
                 {
                     isTied = true;
@@ -193,6 +210,7 @@ namespace TicTacToe
         public bool checkWinCondition(char flag)
         {
             checkValue = false;
+            //  Checks if any win condition returns true, if any one condition is true then checkValue is assigned true
             if (checkWinVertical(flag) || checkWinHorizontal(flag) || checkWinDiagnol(flag))
             { checkValue = true; }
             return checkValue;
@@ -201,6 +219,6 @@ namespace TicTacToe
     }
 }
 
-    
+
 
 
