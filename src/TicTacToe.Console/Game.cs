@@ -247,6 +247,8 @@ namespace TicTacToe
         {
             gameTimeStats.stopTime();
             gameTimeStats.setGameWinLoss(user.wins, user.losses, user.ties);
+            //  Used to check if the game is not already quit
+            //  Checks if currentlyPlaying is true, if so currentlyPlaying is assigned return value of checkIfPlayAgain
             if (currentlyPlaying == true)
             {
                 currentlyPlaying = checkIfPlayAgain();
