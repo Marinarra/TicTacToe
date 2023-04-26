@@ -77,6 +77,8 @@ namespace TicTacToe
                 WriteLine("Would you like to play as 'X' or 'O'' ?");
                 ConsoleKeyInfo keyRead = Console.ReadKey();
                 reusableBool = true;
+                //  Used to determine if user would like to play as 'O' or 'X' and if user chose valid symbol
+                //  Checks if key pressed is O key, if so user symbol is set to 'O'  and pc symbol to 'X'. reusableBool is also set to false
                 if (keyRead.Key == ConsoleKey.O) //User chooses O
                 {
                     WriteLine("\nUser has chosen 'O'"); 
@@ -84,6 +86,7 @@ namespace TicTacToe
                     pc.symbol = ('X');
                     reusableBool = false;
                 }
+                //  Checks if key pressed is X key, if so user symbol is set to 'X'  and pc symbol to 'O'. reusableBool is also set to false
                 else if (keyRead.Key == ConsoleKey.X)   //User chooses X
                 {
                     WriteLine("\nUser has chosen 'X'");
@@ -91,6 +94,7 @@ namespace TicTacToe
                     pc.symbol = ('O');
                     reusableBool = false;
                 }
+                //  If any other key pressed, user is told to try again and reusableBool remains true
                 else
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
