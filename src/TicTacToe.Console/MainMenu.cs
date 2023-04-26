@@ -94,6 +94,8 @@ namespace TicTacToe
         /// </summary>
         private static void exitGame()
         {
+            //  Confirms if the user wants to exit the application
+            //  Prints goodbye messege and exits application
             if(checkIfSure() == true)
             {
                 Console.Clear();
