@@ -159,10 +159,12 @@ namespace TicTacToe
         {
             checkValue = false;
 
+            //  Checks if board[0],board[4],board[8] all contain flag, if true sets checkValue to true
             if (board[0] == flag && board[4] == flag && board[8] == flag) // top left to bottom right is filled
             {
                 checkValue = true;
             }
+            //  Checks if board[2],board[4],board[6] all contain flag, if true sets checkValue to true
             if (board[2] == flag && board[4] == flag && board[6] == flag) // top right to bottom left is filled
             {
                 checkValue = true;
