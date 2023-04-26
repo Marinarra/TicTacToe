@@ -132,6 +132,7 @@ namespace TicTacToe
         private bool checkWinVertical(char flag)
         {
             checkValue = false;
+            //  Has 3 iterations to check each collumn of the board 
             for (int i = 0; i < 3; i++)
             {
                 //  Checks if flag is the value of boards [0],[3],[6] then [1],[4],[7] then [2],[5],[8]
