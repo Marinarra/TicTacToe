@@ -1,7 +1,7 @@
 ﻿using System;
 using static System.Console;
 namespace TicTacToe
-{ 
+{
     /// <summary>
     /// Displays a main menu screen with options for the user to select. 
     /// User starts, exits and views game stats via menu.
@@ -13,7 +13,7 @@ namespace TicTacToe
         /// Runs prints a menu screen to console forever until option is chosen/game exited via option. 
         /// Detects when user clicks a key and runs the corresponding function.
         /// </summary>
-         
+
         static void Main(string[] args)
         {
             int option;
@@ -31,23 +31,20 @@ namespace TicTacToe
                 {
                     case 1:     // If user presses 1 key
                         //new game
-                        Game.startGame(); 
+                        Game.startGame();
                         break;
                     case 2:    // If user presses 2 key
                         //game stats
                         gameStatsSubMenu();
                         break;
                     case 3:    // If user presses 3 key
-                       exitGame();
+                        exitGame();
                         //exit game
                         break;
                     default:    // If 1,2,3 keys are NOT pressed
                         break;
                 }
-
             }
-            // Game.startGame();
-
         }
 
         /// <summary>
@@ -70,7 +67,7 @@ namespace TicTacToe
             WriteLine("***************************************************************************************************");
             WriteLine("\n\n  ---------------------------------------------------------");
 
-            WriteLine("{2,20} {0,20} {1:00:00} {2,2}", "Time spent in previous game:", gameTimeStats.getGameTime(),"||");
+            WriteLine("{2,20} {0,20} {1:00:00} {2,2}", "Time spent in previous game:", gameTimeStats.getGameTime(), "||");
             WriteLine("{2,20} {0,20} {1:00:00} {2,8}", "Time spent on average:", (gameTimeStats.getTotalGameTime() > 0) ? gameTimeStats.getAvgGameTime() : 0, "||");
             WriteLine("{2,20} {0,20} {1:00:00} {2,5}", "Total time spent overall:", gameTimeStats.getTotalGameTime(), "||");
             WriteLine("--------------------------------------------------------------------------------------------------------------------");
@@ -85,7 +82,7 @@ namespace TicTacToe
             WriteLine("\t\t Press any button \n");
             WriteLine(" - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
             while (!Console.KeyAvailable) ;
-            
+
         }
 
         /// <summary>
@@ -96,10 +93,10 @@ namespace TicTacToe
         {
             //  Confirms if the user wants to exit the application
             //  Prints goodbye messege and exits application
-            if(checkIfSure() == true)
+            if (checkIfSure() == true)
             {
                 Console.Clear();
-                WriteLine("\n   /|__/,|   (`)' \n"+
+                WriteLine("\n   /|__/,|   (`)' \n" +
                           "_.| o o  ) _) }\n" +
                           "-(((---(((--------\n");
                 WriteLine(" Good Bye!");
@@ -121,14 +118,14 @@ namespace TicTacToe
             ConsoleKeyInfo keyRead = Console.ReadKey();
             //  Checks if console key Y is pressed
             //  Assigns value true to bool check when true
-            if(keyRead.Key == ConsoleKey.Y)
+            if (keyRead.Key == ConsoleKey.Y)
             {
                 check = true;
             }
             return check;
 
         }
-        
+
         /// <summary>
         /// Converts the value from the unicode value of the key to the corresponding integer.
         /// </summary>
@@ -155,10 +152,10 @@ namespace TicTacToe
         /// Displays main menu to console, uses a loop to loop through 3 options and print each below the previous option and displays the number associated with each option.
         /// </summary>
         private static void printMenuText()
-            {
+        {
             WriteLine("***************************************************************************************************");
 
-            string[] options = {"New Game","Game Stats","Exit Game"};
+            string[] options = { "New Game", "Game Stats", "Exit Game" };
             WriteLine("\t######                          #     #\n" +
                       "\t#     #   ##   #    # ######    ##   ## ###### #    # #    # \n" +
                       "\t#        #  #  ##  ## #         # # # # #      ##   # #    # \n" +
@@ -171,15 +168,15 @@ namespace TicTacToe
             WriteLine("***************************************************************************************************");
             //  Prints out each item to console with values from options array, each iteration the next index of options is printed alongside number of the iteration + 1
             for (int i = 0; i < 3; i++)
-                {
-                    WriteLine("\t  -||============-+-> \n" +
-                              "\t [→_→] {1} -+-> Press {0} (=^._.^=)∫ \n" +
-                              "\t  -||============-+-> \n\n", i + 1, options[i]);
-                }
+            {
+                WriteLine("\t  -||============-+-> \n" +
+                          "\t [→_→] {1} -+-> Press {0} (=^._.^=)∫ \n" +
+                          "\t  -||============-+-> \n\n", i + 1, options[i]);
             }
-        
-
-
         }
 
+
+
     }
+
+}
