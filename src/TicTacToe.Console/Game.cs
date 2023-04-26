@@ -37,6 +37,7 @@ namespace TicTacToe
         private static void checkIfUserFirst()
         {
             bool correctSymbol = false;
+            //  Loops to see if the user would like to go first and validates the input
             do
             {
                 WriteLine("Would you like to go first? (Y/N) ");
@@ -58,6 +59,7 @@ namespace TicTacToe
                 {
                     WriteLine("\n Choice is unavailable! Please try again.");
                 }
+             // Loops while the correctSymbol = false, while any key thats not N or Y is pressed
             } while (correctSymbol == false);
         }
 
