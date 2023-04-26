@@ -269,6 +269,7 @@ namespace TicTacToe
             WriteLine("-----------------------------------\n");
             ConsoleKeyInfo keyRead = Console.ReadKey();
             bool inputValid = true;
+            //  Used to iterate until user selects valid input on whether to play again or not
             do
             {
                 if (keyRead.Key == ConsoleKey.Y)
@@ -286,6 +287,7 @@ namespace TicTacToe
                     keyRead = Console.ReadKey();
                     inputValid = false;
                 }
+            //  Loops while inputValid is false, input is not valid
             } while (!(inputValid));
 
             return reusableBool;
