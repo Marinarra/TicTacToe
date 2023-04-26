@@ -28,6 +28,7 @@ namespace TicTacToe
         /// </summary>
         private void initBoard()
         {
+            //  Assigns i value + 1 as a character to i of board array
             for (int i = 0; i < 9; i++)
             {
                 board[i] = Convert.ToChar(Convert.ToString(i + 1));
