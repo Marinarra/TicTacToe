@@ -168,7 +168,7 @@ namespace TicTacToe
         /// <param name="value"> Represents the unicode value of the key pressed by the user</param>
         /// <returns> A bit-32 integer, converted from unicode to its intended value.
         /// (keyboard numbers 0 to 9 = 48 to 57) (numpad numbers 0 to 9 = 96 to 105) </returns>
-        private static int convertAscii(int value)
+        public static int convertAscii(int value)
         {
             //  Checks if value is in range 48 to 57 and then range 96 to 105
             //  If value is in first range, 48 is subtracted from value
