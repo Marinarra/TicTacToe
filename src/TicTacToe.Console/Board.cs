@@ -185,7 +185,11 @@ namespace TicTacToe
             return isTied;
         }
 
-
+        /// <summary>
+        /// Used to call all check functions for win conditions (vertical,horizontal and diagnol).
+        /// </summary>
+        /// <param name="flag">Char, represents symbol in Tic-Tac-Toe ('X' or 'O')</param>
+        /// <returns>Boolean, represents whether any win conditions have been met (true = a win condition met, false = no win conditions met)</returns>
         public bool checkWinCondition(char flag)
         {
             checkValue = false;
