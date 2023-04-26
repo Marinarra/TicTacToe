@@ -26,20 +26,22 @@ namespace TicTacToe
 
                 option = convertAscii(Convert.ToInt32(keyRead.Key));
 
+                //  Determines option user chooses via input 1-3
                 switch (option)
                 {
-                    case 1:
-                        Game.startGame(); // new game
+                    case 1:     // If user presses 1 key
+                        //new game
+                        Game.startGame(); 
                         break;
-                    case 2:
+                    case 2:    // If user presses 2 key
                         //game stats
                         gameStatsSubMenu();
                         break;
-                    case 3:
+                    case 3:    // If user presses 3 key
                        exitGame();
                         //exit game
                         break;
-                    default:
+                    default:    // If 1,2,3 keys are NOT pressed
                         break;
                 }
 
