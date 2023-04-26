@@ -145,11 +145,14 @@ namespace TicTacToe
                 ConsoleKeyInfo keyRead = Console.ReadKey(); 
 
                 keyEntered = convertAscii(Convert.ToInt32(keyRead.Key));
+                //  Used to check if user wishes to exit or if their number is a valid coordinate to choose
+                //  Checks if keyEntered equals 0, if so then currentlyPlaying is set to false and correctOption is set to true - Exits game
                 if (keyEntered == 0)
                 {
                     currentlyPlaying = false;
                     correctOption = true;
                 }
+                //  Checks if keyEntered is greater than 0, if so correctOption is set to return value of function to check if the move was valid
                 else if (keyEntered > 0)
                 {
                     correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
