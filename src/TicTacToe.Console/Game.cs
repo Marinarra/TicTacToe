@@ -157,6 +157,12 @@ namespace TicTacToe
                 {
                     correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
                 }
+                else 
+                {
+                    Console.Clear();
+                    updateScreen();
+                    WriteLine("Input is invalid! Please use either number keys");
+                }
                 //  Continues while the correctOption is false and currentlyPlaying is true
             } while (correctOption == false && currentlyPlaying == true);
         }
