@@ -157,6 +157,7 @@ namespace TicTacToe
                 {
                     correctOption = board.checkIfCellAvailable(keyEntered - 1, flagTurn);
                 }
+                //  If input is not a valid number key on keyboard, displays input as invalid and re-displays prompt
                 else 
                 {
                     Console.Clear();
