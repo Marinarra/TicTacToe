@@ -181,6 +181,10 @@ namespace TicTacToe
             {
                 value -= 96;
             }
+            else
+            {
+                value = -69;
+            }
             return value;
         }
 
