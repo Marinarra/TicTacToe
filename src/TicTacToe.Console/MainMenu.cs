@@ -81,7 +81,9 @@ namespace TicTacToe
             WriteLine("  -------------------------------------------");
             WriteLine("\t\t Press any button \n");
             WriteLine(" - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
-            if(ReadKey().KeyChar >= 0)
+            //  Used to check if user has pressed any key
+            //  If any key is read as pressed then user is returned to mainMenu
+            if(ReadKey().KeyChar >= 0)  //  Any key pressed, all keys have value >= 0
             {
                 return;
             }
