@@ -81,8 +81,10 @@ namespace TicTacToe
             WriteLine("  -------------------------------------------");
             WriteLine("\t\t Press any button \n");
             WriteLine(" - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
-            while (!Console.KeyAvailable) ;
-
+            if(ReadKey().KeyChar >= 0)
+            {
+                return;
+            }
         }
 
         /// <summary>
