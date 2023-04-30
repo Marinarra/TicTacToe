@@ -8,7 +8,6 @@ namespace TicTacToe
     /// </summary>
     public class MainMenu
     {
-
         /// <summary>
         /// Runs prints a menu screen to console forever until option is chosen/game exited via option. 
         /// Detects when user clicks a key and runs the corresponding function.
@@ -16,6 +15,7 @@ namespace TicTacToe
 
         static void Main(string[] args)
         {
+            Console.Title = "Tic Tac Toe";
             int option;
             // Infinite loop to display main menu
             while (true)
@@ -57,33 +57,33 @@ namespace TicTacToe
 
 
             WriteLine("***************************************************************************************************\n");
-            WriteLine("\t## ##     ##     ##   ##  ### ###            ## ##   #### ##    ##     #### ##   ## ##   \n" +
+            WriteLine("\t#####       ##    ##   ##   ######            ####    ######      ##    ######   #####  \n" +
                       "\t##   ##     ##     ## ##    ##  ##           ##   ##  # ## ##     ##    # ## ##  ##   ##  \n" +
                       "\t##        ## ##   # ### #   ##               ####       ##      ## ##     ##     ####     \n" +
-                      "\t##  ###   ##  ##  ## # ##   ## ##             #####     ##      ##  ##    ##      #####   \n" +
-                      "\t##   ##   ## ###  ##   ##   ##                   ###    ##      ## ###    ##         ###  \n" +
+                      "\t##  ###   ##  ##  ## # ##   #####             #####     ##      ##  ##    ##      #####   \n" +
+                      "\t##   ##   ## ###  ##   ##   ##                   ###    ##      ######    ##         ###  \n" +
                       "\t##   ##   ##  ##  ##   ##   ##  ##           ##   ##    ##      ##  ##    ##     ##   ##  \n" +
-                      "\t## ##   ###  ##  ##   ##  ### ###            ## ##    ####    ###  ##   ####     ## ##    \n");
+                      "\t######   ###  ### ##   ##   ######            ####     ####    ###  ###  ####     ####    \n");
             WriteLine("***************************************************************************************************");
-            WriteLine("\n\n  ---------------------------------------------------------");
+            WriteLine("\n\n\t\t  ----------------------------------------");
 
             WriteLine("{2,20} {0,20} {1:00:00} {2,2}", "Time spent in previous game:", gameTimeStats.getGameTime(), "||");
             WriteLine("{2,20} {0,20} {1:00:00} {2,8}", "Time spent on average:", (gameTimeStats.getTotalGameTime() > 0) ? gameTimeStats.getAvgGameTime() : 0, "||");
             WriteLine("{2,20} {0,20} {1:00:00} {2,5}", "Total time spent overall:", gameTimeStats.getTotalGameTime(), "||");
-            WriteLine("--------------------------------------------------------------------------------------------------------------------");
-            WriteLine("   ||\tUser Wins\t User Losses      ||");
-            WriteLine("   ||\t{0}\t\t{1}                 ||", gameTimeStats.userWins, gameTimeStats.userLosses);
-            WriteLine("   -----------------------------------------");
-            WriteLine("   ||\tSystem Wins\t System Losses    ||");
-            WriteLine("   ||\t{0}\t\t{1}                 ||", gameTimeStats.userLosses, gameTimeStats.userWins);
-            WriteLine("  -------------------------------------------");
-            WriteLine("  |\t\t  Ties: {0}\t            |", gameTimeStats.ties);
-            WriteLine("  -------------------------------------------");
-            WriteLine("\t\t Press any button \n");
-            WriteLine(" - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+            WriteLine("\t\t^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+            WriteLine("\t\t||\tUser Wins\t User Losses      ||");
+            WriteLine("\t\t||\t   {0}\t\t\t{1}         ||", gameTimeStats.userWins, gameTimeStats.userLosses);
+            WriteLine("\t\t >----------------------------------------<");
+            WriteLine("\t\t||\tSystem Wins\t System Losses    ||");
+            WriteLine("\t\t||\t   {0}\t\t\t{1}         ||", gameTimeStats.userLosses, gameTimeStats.userWins);
+            WriteLine("\t\t--------------------------------------------");
+            WriteLine("\t\t|\t\t Ties: {0}\t           |", gameTimeStats.ties);
+            WriteLine("\t\t--------------------------------------------");
+            WriteLine("\t\t\t Press any button \n");
+            WriteLine("»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————-»»————->>\n");
             //  Used to check if user has pressed any key
             //  If any key is read as pressed then user is returned to mainMenu
-            if(ReadKey().KeyChar >= 0)  //  Any key pressed, all keys have value >= 0
+            if (ReadKey().KeyChar >= 0)  //  Any key pressed, all keys have value >= 0
             {
                 return;
             }
@@ -100,6 +100,7 @@ namespace TicTacToe
             if (checkIfSure() == true)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
                 WriteLine("\n   /|__/,|   (`)' \n" +
                           "_.| o o  ) _) }\n" +
                           "-(((---(((--------\n");
@@ -130,8 +131,6 @@ namespace TicTacToe
 
         }
 
-
-
         /// <summary>
         /// Displays main menu to console, uses a loop to loop through 3 options and print each below the previous option and displays the number associated with each option.
         /// </summary>
@@ -147,8 +146,6 @@ namespace TicTacToe
                       "\t#     # ###### #    # #         #     # #      #  # # #    # \n" +
                       "\t#     # #    # #    # #         #     # #      #   ## #    # \n" +
                       "\t######  #    # #    # ######    #     # ###### #    #  ####   \n");
-
-
             WriteLine("***************************************************************************************************");
             //  Prints out each item to console with values from options array, each iteration the next index of options is printed alongside number of the iteration + 1
             for (int i = 0; i < 3; i++)
@@ -158,9 +155,6 @@ namespace TicTacToe
                           "\t  -||============-+-> \n\n", i + 1, options[i]);
             }
         }
-
-
-
     }
 
 }
