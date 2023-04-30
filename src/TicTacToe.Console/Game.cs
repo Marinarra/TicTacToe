@@ -215,7 +215,6 @@ namespace TicTacToe
                     flagTurn = user.symbol;
                     updateScreen();
                 }
-                isGameWon = (board.checkWinCondition(pc.symbol) || board.checkWinCondition(user.symbol) || board.checkTieCondition()); // checks if pc win OR user win OR tie
                 //  Checks if the flagTurn is for the users symbol and if the game hasn't been won, if so the scren is updated, the user is given a coordinate selection screen and then the flag is given to the system 
                 else if (flagTurn == user.symbol && isGameWon == false)  // user turn
                 {
