@@ -203,6 +203,7 @@ namespace TicTacToe
         {
             gameTimeStats.startTimer();
             bool isGameWon = false; //  Game won/tied = true, game not won/tied = false
+            updateScreen();
             //  Used to loop game turns until match is tied or won
             do
             {
