@@ -220,9 +220,9 @@ namespace TicTacToe
                 //  Checks if the flagTurn is for the users symbol and if the game hasn't been won, if so the scren is updated, the user is given a coordinate selection screen and then the flag is given to the system 
                 if (flagTurn == user.symbol && isGameWon == false)  // user turn
                 {
-                    updateScreen();
                     gameMenu();
                     flagTurn = pc.symbol;
+                    updateScreen();
                 }
                 //  Loops while isGameWon is false and currentlyPlaying is true (isGameWon is also including if theres a tie)
             } while (isGameWon == false && currentlyPlaying == true);
