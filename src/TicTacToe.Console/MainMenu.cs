@@ -100,6 +100,7 @@ namespace TicTacToe
             if (checkIfSure() == true)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
                 WriteLine("\n   /|__/,|   (`)' \n" +
                           "_.| o o  ) _) }\n" +
                           "-(((---(((--------\n");
