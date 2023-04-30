@@ -2,12 +2,14 @@
 using static System.Console;
 namespace TicTacToe
 {
+    
     /// <summary>
     /// Displays a main menu screen with options for the user to select. 
     /// User starts, exits and views game stats via menu.
     /// </summary>
     public class MainMenu
     {
+
 
         /// <summary>
         /// Runs prints a menu screen to console forever until option is chosen/game exited via option. 
@@ -16,6 +18,7 @@ namespace TicTacToe
 
         static void Main(string[] args)
         {
+            Console.Title = "Tic Tac Toe";
             int option;
             // Infinite loop to display main menu
             while (true)
