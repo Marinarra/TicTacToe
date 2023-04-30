@@ -2,15 +2,12 @@
 using static System.Console;
 namespace TicTacToe
 {
-    
     /// <summary>
     /// Displays a main menu screen with options for the user to select. 
     /// User starts, exits and views game stats via menu.
     /// </summary>
     public class MainMenu
     {
-
-
         /// <summary>
         /// Runs prints a menu screen to console forever until option is chosen/game exited via option. 
         /// Detects when user clicks a key and runs the corresponding function.
@@ -134,8 +131,6 @@ namespace TicTacToe
 
         }
 
-
-
         /// <summary>
         /// Displays main menu to console, uses a loop to loop through 3 options and print each below the previous option and displays the number associated with each option.
         /// </summary>
@@ -151,8 +146,6 @@ namespace TicTacToe
                       "\t#     # ###### #    # #         #     # #      #  # # #    # \n" +
                       "\t#     # #    # #    # #         #     # #      #   ## #    # \n" +
                       "\t######  #    # #    # ######    #     # ###### #    #  ####   \n");
-
-
             WriteLine("***************************************************************************************************");
             //  Prints out each item to console with values from options array, each iteration the next index of options is printed alongside number of the iteration + 1
             for (int i = 0; i < 3; i++)
@@ -162,9 +155,6 @@ namespace TicTacToe
                           "\t  -||============-+-> \n\n", i + 1, options[i]);
             }
         }
-
-
-
     }
 
 }

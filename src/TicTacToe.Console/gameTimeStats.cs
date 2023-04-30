@@ -5,10 +5,10 @@ namespace TicTacToe
     /// Records statistics and calculates the average and total time. Also stores total player/user wins and ties.
     /// Used to display statistics in MainMenu
     /// </summary>
-      public static class gameTimeStats
-      {
+    public static class gameTimeStats
+    {
         static Stopwatch timer = new Stopwatch();
-        private static double gameTime = 0.00, avgGameTime = 0.00,totalGameTime = 0.00;
+        private static double gameTime = 0.00, avgGameTime = 0.00, totalGameTime = 0.00;
         private static int gamesPlayed = 0;
         public static int userWins = 0, userLosses = 0, ties = 0;
 
@@ -82,12 +82,12 @@ namespace TicTacToe
         /// <param name="wins"> Bit-32 Integer, Represents players number of wins across all games </param>
         /// <param name="losses">Bit-32 Integer, Represents players number of losses accross all games</param>
         /// <param name="userTies">Bit-32 Integer, Represents players number of ties accross all games</param>
-        public static void setGameWinLoss(int wins,int losses, int userTies)
+        public static void setGameWinLoss(int wins, int losses, int userTies)
         {
             userWins = wins;
             userLosses = losses;
             ties = userTies;
         }
 
-     }
+    }
 }
