@@ -107,10 +107,12 @@ namespace TicTacToe
         {
             checkValue = false;
             //  Has 3 iterations to check each row of the board
+            int x = 0;
+
             for (int i = 0; i < 3; i++)
             {
                 //  Checks if flag is the value of boards [0],[1],[2] then [3],[4],[5] then [6], [7],[8]
-                if (board[i] == flag && board[i+1] == flag && board[i + 2] == flag)  // each row
+                if (board[i*3] == flag && board[i+1+x] == flag && board[i + 2] == flag)  // each row
                 {
                     //  Checks if the checkValue is still false
                     //  If checkValue is false then true is assigned
@@ -119,6 +121,7 @@ namespace TicTacToe
                         checkValue = true;
                     }
                 }
+                x = +2;
             }
             return checkValue;
         }
